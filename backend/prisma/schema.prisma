@@ -1,0 +1,298 @@
+// Litigation Learning & Case Review Management System
+// Prisma Schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  SUPER_ADMIN
+  ADMIN
+  REVIEWER
+  STUDENT
+}
+
+enum DocumentType {
+  COMPLAINT
+  ANSWER
+  MOTION
+  BRIEF
+  DEPOSITION
+  EXHIBIT
+  EXPERT_REPORT
+  COURT_ORDER
+  PROTOCOL
+  NEWS_ARTICLE
+  NEWSLETTER
+  EMAIL
+  CONTRACT
+  FINANCIAL_RECORD
+}
+
+enum PartyRole {
+  PLAINTIFF
+  DEFENDANT
+  THIRD_PARTY
+  INTERVENOR
+  AMICUS_CURIAE
+}
+
+enum QuizType {
+  MULTIPLE_CHOICE
+  TRUE_FALSE
+  SCENARIO
+  EVIDENCE_IDENTIFICATION
+  RULING_ANALYSIS
+}
+
+model User {
+  id            String    @id @default(uuid())
+  email         String    @unique
+  password      String
+  name          String
+  role          Role      @default(STUDENT)
+  mfaEnabled    Boolean   @default(false)
+  mfaSecret     String?
+  isActive      Boolean   @default(true)
+  lastLogin     DateTime?
+  avatarUrl     String?
+  organization  String?
+  jobTitle      String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  quizAttempts  QuizAttempt[]
+  userProgress  UserProgress[]
+  bookmarks     Bookmark[]
+  notes         Note[]
+  auditLogs     AuditLog[]
+  quizzesCreated Quiz[]
+
+  @@index([email])
+  @@map("users")
+}
+
+model LitigationType {
+  id                String   @id @default(uuid())
+  name              String   @unique
+  slug              String   @unique
+  description       String   @db.Text
+  purpose           String   @db.Text
+  typicalIssues     String[]
+  commonEvidence    String[]
+  courtProcess      String   @db.Text
+  keyPrinciples     String[]
+  practicalExamples String[]
+  icon              String   @default("Scale")
+  color             String   @default("#1e3a5f")
+  category          String   @default("General")
+  difficulty        String   @default("Intermediate")
+  estimatedStudyHours Int    @default(10)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  cases             Case[]
+  quizzes           Quiz[]
+  userProgress      UserProgress[]
+
+  @@index([slug])
+  @@map("litigation_types")
+}
+
+model Case {
+  id                   String          @id @default(uuid())
+  litigationTypeId     String
+  litigationType       LitigationType  @relation(fields: [litigationTypeId], references: [id])
+  name                 String
+  citation             String?
+  jurisdiction         String
+  court                String
+  filingDate           DateTime?
+  decisionDate         DateTime?
+  year                 Int?
+  facts                String          @db.Text
+  keyLegalIssues       String[]
+  plaintiffArguments   String          @db.Text
+  defendantArguments   String          @db.Text
+  proceduralHistory    String          @db.Text
+  finalDecision        String          @db.Text
+  judicialReasoning    String          @db.Text
+  legalStandards       String[]
+  keyPrecedents        String[]
+  evidenceAnalysis     String          @db.Text
+  alternativeOutcomes  String          @db.Text
+  lessonsLearned       String[]
+  bestPractices        String[]
+  significance         String          @db.Text
+  outcome              String          @default("Pending")
+  isFeatured           Boolean         @default(false)
+  isPublished          Boolean         @default(true)
+  viewCount            Int             @default(0)
+  createdAt            DateTime        @default(now())
+  updatedAt            DateTime        @updatedAt
+
+  documents            Document[]
+  parties              Party[]
+  quizzes              Quiz[]
+  bookmarks            Bookmark[]
+  notes                Note[]
+
+  @@index([litigationTypeId])
+  @@index([name])
+  @@map("cases")
+}
+
+model Document {
+  id           String       @id @default(uuid())
+  caseId       String
+  case         Case         @relation(fields: [caseId], references: [id], onDelete: Cascade)
+  name         String
+  type         DocumentType
+  description  String?
+  fileUrl      String?
+  fileSize     Int?
+  mimeType     String?
+  uploadedBy   String?
+  isPublic     Boolean      @default(true)
+  createdAt    DateTime     @default(now())
+
+  @@index([caseId])
+  @@map("documents")
+}
+
+model Party {
+  id       String    @id @default(uuid())
+  caseId   String
+  case     Case      @relation(fields: [caseId], references: [id], onDelete: Cascade)
+  name     String
+  role     PartyRole
+  counsel  String?
+  description String?
+
+  @@index([caseId])
+  @@map("parties")
+}
+
+model Quiz {
+  id               String         @id @default(uuid())
+  title            String
+  description      String         @db.Text
+  litigationTypeId String?
+  litigationType   LitigationType? @relation(fields: [litigationTypeId], references: [id])
+  caseId           String?
+  case             Case?          @relation(fields: [caseId], references: [id])
+  type             QuizType       @default(MULTIPLE_CHOICE)
+  isAiGenerated    Boolean        @default(false)
+  timeLimit        Int?           // in minutes
+  passingScore     Int            @default(70)
+  isPublished      Boolean        @default(true)
+  createdBy        String?
+  creator          User?          @relation(fields: [createdBy], references: [id])
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+
+  questions        Question[]
+  attempts         QuizAttempt[]
+
+  @@index([litigationTypeId])
+  @@map("quizzes")
+}
+
+model Question {
+  id            String   @id @default(uuid())
+  quizId        String
+  quiz          Quiz     @relation(fields: [quizId], references: [id], onDelete: Cascade)
+  text          String   @db.Text
+  options       Json     // Array of {id, text} objects
+  correctAnswer String
+  explanation   String   @db.Text
+  points        Int      @default(1)
+  orderIndex    Int      @default(0)
+
+  @@index([quizId])
+  @@map("questions")
+}
+
+model QuizAttempt {
+  id          String    @id @default(uuid())
+  quizId      String
+  quiz        Quiz      @relation(fields: [quizId], references: [id])
+  userId      String
+  user        User      @relation(fields: [userId], references: [id])
+  score       Float
+  passed      Boolean
+  answers     Json      // Array of {questionId, selectedAnswer, isCorrect}
+  completedAt DateTime  @default(now())
+  timeTaken   Int?      // in seconds
+
+  @@index([userId])
+  @@index([quizId])
+  @@map("quiz_attempts")
+}
+
+model UserProgress {
+  id                 String         @id @default(uuid())
+  userId             String
+  user               User           @relation(fields: [userId], references: [id])
+  litigationTypeId   String
+  litigationType     LitigationType @relation(fields: [litigationTypeId], references: [id])
+  casesViewed        Int            @default(0)
+  quizzesCompleted   Int            @default(0)
+  avgScore           Float          @default(0)
+  studyTimeMinutes   Int            @default(0)
+  lastActivity       DateTime       @default(now())
+  updatedAt          DateTime       @updatedAt
+
+  @@unique([userId, litigationTypeId])
+  @@index([userId])
+  @@map("user_progress")
+}
+
+model Bookmark {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  caseId    String
+  case      Case     @relation(fields: [caseId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@unique([userId, caseId])
+  @@index([userId])
+  @@map("bookmarks")
+}
+
+model Note {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  caseId    String
+  case      Case     @relation(fields: [caseId], references: [id])
+  content   String   @db.Text
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId, caseId])
+  @@map("notes")
+}
+
+model AuditLog {
+  id         String   @id @default(uuid())
+  userId     String?
+  user       User?    @relation(fields: [userId], references: [id])
+  action     String
+  resource   String
+  resourceId String?
+  ipAddress  String?
+  userAgent  String?
+  metadata   Json?
+  createdAt  DateTime @default(now())
+
+  @@index([userId])
+  @@index([createdAt])
+  @@map("audit_logs")
+}
