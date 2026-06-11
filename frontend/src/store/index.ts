@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import { User, DashboardStats, UserProgress } from '@/types';
 import { authApi } from '@/lib/api';
-import { storeTokens, clearTokens } from '@/lib/auth';
+import { storeTokens, clearTokens, tryDemoLogin } from '@/lib/auth';
 
 interface AuthState {
   user: User | null;
@@ -37,6 +37,13 @@ export const useAuthStore = create<AuthState>()(
           set({ user: data.user, isAuthenticated: true, isLoading: false });
           return data;
         } catch (error) {
+          // Backend unreachable or rejected: fall back to demo-mode accounts
+          const demo = tryDemoLogin(email, password);
+          if (demo) {
+            storeTokens(demo);
+            set({ user: demo.user, isAuthenticated: true, isLoading: false });
+            return demo;
+          }
           set({ isLoading: false });
           throw error;
         }
@@ -82,6 +89,15 @@ export const useAuthStore = create<AuthState>()(
             clearTokens();
             set({ user: null, isAuthenticated: false });
             return;
+          }
+
+          // Demo-mode tokens are validated locally, not against the backend
+          if (accessToken.endsWith('.demo')) {
+            const storedUser = localStorage.getItem('user');
+            if (storedUser) {
+              set({ user: JSON.parse(storedUser), isAuthenticated: true });
+              return;
+            }
           }
 
           const response = await authApi.getMe();
