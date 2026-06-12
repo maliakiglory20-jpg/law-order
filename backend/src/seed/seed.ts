@@ -902,7 +902,7 @@ async function main() {
         ...caseFields,
         litigationTypeId: litigationType.id,
         parties: {
-          create: parties || [],
+          create: (parties || []).map((p) => ({ ...p, role: p.role as any })),
         },
       },
     });

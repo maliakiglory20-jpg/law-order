@@ -196,7 +196,7 @@ Return ONLY valid JSON, no other text.`;
     const client = this.ensureClient();
     const caseItem = await this.prisma.case.findUnique({
       where: { id: caseId },
-      include: { documents: true },
+      include: { documents: true, litigationType: true },
     });
     if (!caseItem) throw new Error('Case not found');
 
