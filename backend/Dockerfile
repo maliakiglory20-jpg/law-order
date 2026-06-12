@@ -1,5 +1,5 @@
 # ---- Build stage ----
-FROM node:20-alpine AS builder
+FROM node:20-bullseye AS builder
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci
@@ -9,7 +9,7 @@ COPY . .
 RUN npm run build
 
 # ---- Production stage ----
-FROM node:20-alpine
+FROM node:20-bullseye
 WORKDIR /app
 ENV NODE_ENV=production
 COPY package*.json ./

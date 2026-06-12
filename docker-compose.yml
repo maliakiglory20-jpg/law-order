@@ -88,6 +88,8 @@ services:
       - .env
     environment:
       - NEXT_PUBLIC_API_URL=http://backend:3001
+      - PORT=3000
+      - NODE_ENV=production
 
 volumes:
   postgres_data:
