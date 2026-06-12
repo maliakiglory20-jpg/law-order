@@ -77,7 +77,7 @@ export default function CaseDetailPage({ params }: { params: { id: string } }) {
         {/* Parties */}
         {caseItem.parties && caseItem.parties.length > 0 && (
           <div className="mt-4 pt-4 border-t border-slate-100 dark:border-slate-700 flex flex-wrap gap-4">
-            {caseItem.parties.map((p) => (
+            {caseItem.parties.map((p: any) => (
               <div key={p.id} className="flex items-center gap-2">
                 <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${p.role === 'PLAINTIFF' ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400' : p.role === 'DEFENDANT' ? 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400' : 'bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-300'}`}>{p.role}</span>
                 <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{p.name}</span>
@@ -102,7 +102,7 @@ export default function CaseDetailPage({ params }: { params: { id: string } }) {
       {/* Tabs */}
       <div className="border-b border-slate-200 dark:border-slate-700">
         <div className="flex gap-1 overflow-x-auto">
-          {TABS.map((tab) => (
+          {TABS.map((tab: string) => (
             <button key={tab} onClick={() => setActiveTab(tab)}
               className={`px-4 py-3 text-sm font-medium whitespace-nowrap border-b-2 transition-colors ${activeTab === tab ? 'border-amber-400 text-amber-600 dark:text-amber-400' : 'border-transparent text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200'}`}>
               {tab}
@@ -122,7 +122,7 @@ export default function CaseDetailPage({ params }: { params: { id: string } }) {
             <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-6">
               <h3 className="font-semibold text-slate-900 dark:text-white mb-3">Key Legal Issues</h3>
               <ul className="space-y-2">
-                {caseItem.keyLegalIssues.map((issue, i) => (
+                {caseItem.keyLegalIssues.map((issue: string, i: number) => (
                   <li key={i} className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400">
                     <span className="text-amber-500 mt-0.5 font-bold">{i + 1}.</span> {issue}
                   </li>
@@ -133,7 +133,7 @@ export default function CaseDetailPage({ params }: { params: { id: string } }) {
         )}
         {activeTab === 'Case Summary' && (
           <div className="space-y-4">
-            {[['Facts of the Case', caseItem.facts], ['Plaintiff\'s Arguments', caseItem.plaintiffArguments], ['Defendant\'s Arguments', caseItem.defendantArguments], ['Procedural History', caseItem.proceduralHistory]].map(([title, content]) => (
+            {[['Facts of the Case', caseItem.facts], ['Plaintiff\'s Arguments', caseItem.plaintiffArguments], ['Defendant\'s Arguments', caseItem.defendantArguments], ['Procedural History', caseItem.proceduralHistory]].map(([title, content]: any[]) => (
               <div key={title} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-6">
                 <h3 className="font-semibold text-slate-900 dark:text-white mb-3">{title}</h3>
                 <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{content}</p>
@@ -150,7 +150,7 @@ export default function CaseDetailPage({ params }: { params: { id: string } }) {
               <div>
                 <h4 className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-3">Best Practices</h4>
                 <ul className="space-y-2">
-                  {caseItem.bestPractices.map((bp, i) => <li key={i} className="text-sm text-slate-600 dark:text-slate-400 flex gap-2"><span className="text-emerald-500">✓</span>{bp}</li>)}
+                  {caseItem.bestPractices.map((bp: string, i: number) => <li key={i} className="text-sm text-slate-600 dark:text-slate-400 flex gap-2"><span className="text-emerald-500">✓</span>{bp}</li>)}
                 </ul>
               </div>
             )}
