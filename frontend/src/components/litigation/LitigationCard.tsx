@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { BookOpen, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { LitigationType } from '@/types';
+import { TypeIcon } from '@/components/litigation/TypeIcon';
 
 const difficultyColor = {
   Beginner: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400',
@@ -25,7 +26,7 @@ export function LitigationCard({ item, compact }: LitigationCardProps) {
         compact ? 'p-4' : 'p-5',
       )}>
         <div className="flex items-start justify-between mb-3">
-          <div className="text-2xl">{item.icon}</div>
+          <div className="text-2xl text-amber-500"><TypeIcon name={item.icon} className="h-7 w-7" /></div>
           <span className={cn('text-xs font-medium px-2 py-1 rounded-full', difficultyColor[item.difficulty])}>
             {item.difficulty}
           </span>

@@ -14,13 +14,16 @@ export class CasesService {
     limit?: number;
     sortBy?: string;
   }) {
-    const { litigationTypeId, search, jurisdiction, year, page = 1, limit = 20, sortBy = 'createdAt' } = params;
+    const { litigationTypeId, search, jurisdiction, year, sortBy = 'createdAt' } = params;
+    // Query params arrive as strings; coerce to numbers for Prisma take/skip.
+    const page = Number(params.page) || 1;
+    const limit = Number(params.limit) || 20;
     const skip = (page - 1) * limit;
 
     const where: any = { isPublished: true };
     if (litigationTypeId) where.litigationTypeId = litigationTypeId;
     if (jurisdiction) where.jurisdiction = { contains: jurisdiction, mode: 'insensitive' };
-    if (year) where.year = year;
+    if (year) where.year = Number(year);
     if (search) {
       where.OR = [
         { name: { contains: search, mode: 'insensitive' } },

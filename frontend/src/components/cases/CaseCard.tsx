@@ -40,10 +40,10 @@ export function CaseCard({ caseItem, onBookmark, isBookmarked }: CaseCardProps) 
             <Building2 className="h-3 w-3" />
             <span className="truncate max-w-[120px]">{caseItem.court}</span>
           </div>
-          {caseItem.decisionDate && (
+          {(caseItem.decisionDate || (caseItem as any).year) && (
             <div className="flex items-center gap-1">
               <Calendar className="h-3 w-3" />
-              <span>{new Date(caseItem.decisionDate).getFullYear()}</span>
+              <span>{caseItem.decisionDate ? new Date(caseItem.decisionDate).getFullYear() : (caseItem as any).year}</span>
             </div>
           )}
         </div>
