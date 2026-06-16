@@ -30,8 +30,26 @@ async function bootstrap() {
   }));
 
   // CORS
+  // Allowed origins come from defaults + FRONTEND_URL + a comma-separated
+  // CORS_ORIGINS env var, and any *.vercel.app deployment is also permitted.
+  const configuredOrigins = (configService.get<string>('CORS_ORIGINS', '') || '')
+    .split(',')
+    .map((o) => o.trim())
+    .filter(Boolean);
+  const allowedOrigins = new Set<string>([
+    frontendUrl,
+    'http://localhost:3000',
+    'http://localhost:3001',
+    ...configuredOrigins,
+  ]);
   app.enableCors({
-    origin: [frontendUrl, 'http://localhost:3000', 'http://localhost:3001'],
+    origin: (origin, callback) => {
+      // Allow non-browser clients (no origin) and any configured/Vercel origin.
+      if (!origin || allowedOrigins.has(origin) || /\.vercel\.app$/.test(new URL(origin).hostname)) {
+        return callback(null, true);
+      }
+      return callback(new Error(`Not allowed by CORS: ${origin}`));
+    },
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
     credentials: true,
@@ -89,7 +107,7 @@ async function bootstrap() {
     },
   });
 
-  await app.listen(port);
+  await app.listen(port, '0.0.0.0');
   logger.log(`Application running on: http://localhost:${port}`);
   logger.log(`Swagger docs available at: http://localhost:${port}/api/docs`);
   logger.log(`Environment: ${configService.get('NODE_ENV', 'development')}`);
