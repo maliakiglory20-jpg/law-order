@@ -1,38 +1,58 @@
 'use client';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ChevronRight, BookOpen, Clock, Award } from 'lucide-react';
+import { ChevronRight, BookOpen, Clock, Award, Scale, FileText } from 'lucide-react';
 import { CaseCard } from '@/components/cases/CaseCard';
+import { TypeIcon } from '@/components/litigation/TypeIcon';
+import { useLitigationType } from '@/hooks/useLitigation';
+import { casesApi } from '@/lib/api';
+import { Case } from '@/types';
 
-const MOCK_DETAIL: Record<string, any> = {
-  constitutional: {
-    name: 'Constitutional Litigation', icon: '🏛️', difficulty: 'Expert', estimatedStudyHours: 14,
-    description: 'Constitutional litigation encompasses cases that test the scope of constitutional rights and the limits of government power under the U.S. Constitution. These cases often involve challenges to statutes, government actions, or policies that allegedly violate fundamental rights.',
-    purpose: 'To define and enforce constitutional rights and establish boundaries on government power. Constitutional cases shape the fundamental law of the land and often have sweeping societal implications.',
-    typicalIssues: ['Equal Protection Clause violations', 'Due Process rights', 'First Amendment freedoms (speech, religion, press)', 'Fourth Amendment search and seizure', 'Fifth Amendment self-incrimination', 'Commerce Clause challenges', 'Separation of powers'],
-    commonEvidence: ['Legislative history and congressional records', 'Social science research and empirical studies', 'Government agency records and data', 'Expert testimony on constitutional history', 'State and local government documents', 'Statistical analyses of disparate impact'],
-    courtProcess: [
-      { step: '1', label: 'Filing', desc: 'Complaint filed in federal district court' },
-      { step: '2', label: 'Standing', desc: 'Court determines plaintiff has standing' },
-      { step: '3', label: 'Constitutional Analysis', desc: 'Court identifies appropriate level of scrutiny' },
-      { step: '4', label: 'Discovery', desc: 'Limited discovery on legislative history and facts' },
-      { step: '5', label: 'Summary Judgment', desc: 'Constitutional question often resolved without trial' },
-      { step: '6', label: 'Appeal', desc: 'Multi-level appellate review, often to Supreme Court' },
-    ],
-    keyPrinciples: ['Strict scrutiny for suspect classifications and fundamental rights', 'Intermediate scrutiny for gender and quasi-suspect classifications', 'Rational basis for economic and social legislation', 'State action doctrine — Constitution limits government, not private actors', 'Standing requirements (injury, causation, redressability)', 'Political question doctrine'],
-  },
+const difficultyColor: Record<string, string> = {
+  Beginner: 'bg-emerald-100 text-emerald-700',
+  Intermediate: 'bg-blue-100 text-blue-700',
+  Advanced: 'bg-amber-100 text-amber-700',
+  Expert: 'bg-red-100 text-red-700',
 };
 
-const MOCK_CASES: any[] = [
-  { id: '1', name: 'Brown v. Board of Education', litigationType: { name: 'Constitutional Litigation' }, court: 'U.S. Supreme Court', jurisdiction: 'Federal', facts: 'Landmark case holding that racial segregation in public schools violates the Equal Protection Clause.', decisionDate: '1954-05-17', outcome: 'Plaintiff Victory', litigationTypeId: '', keyLegalIssues: [], plaintiffArguments: '', defendantArguments: '', proceduralHistory: '', finalDecision: '', judicialReasoning: '', legalStandards: [], keyPrecedents: [], evidenceAnalysis: '', alternativeOutcomes: '', lessonsLearned: [], bestPractices: [], significance: '', isFeatured: true, isPublished: true, viewCount: 0, createdAt: '', updatedAt: '' },
-  { id: '6', name: 'Citizens United v. FEC', litigationType: { name: 'Constitutional Litigation' }, court: 'U.S. Supreme Court', jurisdiction: 'Federal', facts: 'Held that corporate independent expenditures for political communication are protected by the First Amendment.', decisionDate: '2010-01-21', outcome: 'Plaintiff Victory', litigationTypeId: '', keyLegalIssues: [], plaintiffArguments: '', defendantArguments: '', proceduralHistory: '', finalDecision: '', judicialReasoning: '', legalStandards: [], keyPrecedents: [], evidenceAnalysis: '', alternativeOutcomes: '', lessonsLearned: [], bestPractices: [], significance: '', isFeatured: false, isPublished: true, viewCount: 0, createdAt: '', updatedAt: '' },
-  { id: '7', name: 'Obergefell v. Hodges', litigationType: { name: 'Constitutional Litigation' }, court: 'U.S. Supreme Court', jurisdiction: 'Federal', facts: 'Held that same-sex couples have a fundamental right to marry under the Due Process and Equal Protection Clauses.', decisionDate: '2015-06-26', outcome: 'Plaintiff Victory', litigationTypeId: '', keyLegalIssues: [], plaintiffArguments: '', defendantArguments: '', proceduralHistory: '', finalDecision: '', judicialReasoning: '', legalStandards: [], keyPrecedents: [], evidenceAnalysis: '', alternativeOutcomes: '', lessonsLearned: [], bestPractices: [], significance: '', isFeatured: true, isPublished: true, viewCount: 0, createdAt: '', updatedAt: '' },
-];
-
-const difficultyColor: Record<string, string> = { Beginner: 'bg-emerald-100 text-emerald-700', Intermediate: 'bg-blue-100 text-blue-700', Advanced: 'bg-amber-100 text-amber-700', Expert: 'bg-red-100 text-red-700' };
-
 export default function LitigationTypePage({ params }: { params: { slug: string } }) {
-  const detail = MOCK_DETAIL[params.slug] ?? MOCK_DETAIL.constitutional;
-  const { name, icon, difficulty, estimatedStudyHours, description, purpose, typicalIssues, commonEvidence, courtProcess, keyPrinciples } = detail;
+  const { type, isLoading, error } = useLitigationType(params.slug);
+  const [typeCases, setTypeCases] = useState<Case[]>([]);
+
+  useEffect(() => {
+    if (!type?.id) return;
+    let active = true;
+    casesApi
+      .getAll({ litigationTypeId: type.id, limit: 50 })
+      .then((res) => { if (active) setTypeCases(res.data.cases ?? res.data.data ?? []); })
+      .catch(() => { if (active) setTypeCases([]); });
+    return () => { active = false; };
+  }, [type?.id]);
+
+  if (isLoading) {
+    return (
+      <div className="space-y-6 max-w-4xl">
+        <div className="h-40 bg-slate-100 dark:bg-slate-700 rounded-2xl animate-pulse" />
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-2 h-64 bg-slate-100 dark:bg-slate-700 rounded-xl animate-pulse" />
+          <div className="h-64 bg-slate-100 dark:bg-slate-700 rounded-xl animate-pulse" />
+        </div>
+      </div>
+    );
+  }
+
+  if (error || !type) {
+    return (
+      <div className="max-w-4xl text-center py-20">
+        <p className="text-slate-500 dark:text-slate-400">This litigation type could not be found.</p>
+        <Link href="/library" className="text-amber-600 hover:text-amber-700 text-sm font-medium mt-3 inline-block">
+          ← Back to Library
+        </Link>
+      </div>
+    );
+  }
+
+  const caseCount = type._count?.cases ?? typeCases.length;
 
   return (
     <div className="space-y-6 max-w-4xl">
@@ -40,87 +60,113 @@ export default function LitigationTypePage({ params }: { params: { slug: string 
       <nav className="flex items-center gap-2 text-sm text-slate-400">
         <Link href="/library" className="hover:text-amber-500 transition-colors">Library</Link>
         <ChevronRight className="h-3 w-3" />
-        <span className="text-slate-600 dark:text-slate-300">{name}</span>
+        <span className="text-slate-600 dark:text-slate-300">{type.name}</span>
       </nav>
 
       {/* Header */}
       <div className="bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl p-8 text-white">
-        <div className="text-5xl mb-4">{icon}</div>
-        <h1 className="text-3xl font-bold mb-2">{name}</h1>
-        <p className="text-slate-300 text-lg max-w-2xl">{description}</p>
-        <div className="flex items-center gap-4 mt-4">
-          <span className={`text-xs font-medium px-2.5 py-1 rounded-full ${difficultyColor[difficulty]}`}>{difficulty}</span>
-          <div className="flex items-center gap-1.5 text-sm text-slate-400"><Clock className="h-4 w-4" />{estimatedStudyHours} study hours</div>
-          <div className="flex items-center gap-1.5 text-sm text-slate-400"><BookOpen className="h-4 w-4" />5 cases</div>
+        <div className="mb-4 text-amber-400">
+          <TypeIcon name={type.icon} className="h-12 w-12" />
+        </div>
+        <div className="flex items-center gap-2 mb-2">
+          <span className="text-xs font-medium bg-white/10 px-2.5 py-1 rounded-full text-slate-200">{type.category}</span>
+        </div>
+        <h1 className="text-3xl font-bold mb-2">{type.name}</h1>
+        <p className="text-slate-300 text-lg max-w-2xl leading-relaxed">{type.description}</p>
+        <div className="flex items-center gap-4 mt-4 flex-wrap">
+          {type.difficulty && (
+            <span className={`text-xs font-medium px-2.5 py-1 rounded-full ${difficultyColor[type.difficulty] ?? 'bg-slate-100 text-slate-700'}`}>
+              {type.difficulty}
+            </span>
+          )}
+          <div className="flex items-center gap-1.5 text-sm text-slate-400"><Clock className="h-4 w-4" />{type.estimatedStudyHours} study hours</div>
+          <div className="flex items-center gap-1.5 text-sm text-slate-400"><BookOpen className="h-4 w-4" />{caseCount} cases</div>
         </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 space-y-6">
           {/* Purpose */}
-          <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-6">
-            <h2 className="font-semibold text-slate-900 dark:text-white mb-3">Purpose</h2>
-            <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{purpose}</p>
-          </div>
+          {type.purpose && (
+            <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-6">
+              <h2 className="font-semibold text-slate-900 dark:text-white mb-3 flex items-center gap-2"><Scale className="h-5 w-5 text-amber-500" />Purpose</h2>
+              <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{type.purpose}</p>
+            </div>
+          )}
 
           {/* Court Process */}
-          <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-6">
-            <h2 className="font-semibold text-slate-900 dark:text-white mb-4">Court Process Overview</h2>
-            <div className="space-y-3">
-              {courtProcess.map((step: any, i: number) => (
-                <div key={i} className="flex items-start gap-4">
-                  <div className="w-7 h-7 rounded-full bg-amber-400 text-slate-900 flex items-center justify-center text-xs font-bold flex-shrink-0">{step.step}</div>
-                  <div>
-                    <p className="text-sm font-semibold text-slate-900 dark:text-white">{step.label}</p>
-                    <p className="text-xs text-slate-500 dark:text-slate-400">{step.desc}</p>
-                  </div>
-                  {i < courtProcess.length - 1 && <div className="absolute ml-3.5 mt-7 w-0.5 h-3 bg-slate-200 dark:bg-slate-700" />}
-                </div>
-              ))}
+          {type.courtProcess && (
+            <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-6">
+              <h2 className="font-semibold text-slate-900 dark:text-white mb-3 flex items-center gap-2"><FileText className="h-5 w-5 text-amber-500" />Court Process Overview</h2>
+              <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{type.courtProcess}</p>
             </div>
-          </div>
+          )}
 
           {/* Key Principles */}
-          <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-6">
-            <h2 className="font-semibold text-slate-900 dark:text-white mb-3 flex items-center gap-2"><Award className="h-5 w-5 text-amber-500" />Key Legal Principles</h2>
-            <ul className="space-y-2">
-              {keyPrinciples.map((p: string, i: number) => (
-                <li key={i} className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400">
-                  <span className="text-amber-500 mt-0.5">•</span>{p}
-                </li>
-              ))}
-            </ul>
-          </div>
+          {type.keyPrinciples?.length > 0 && (
+            <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-6">
+              <h2 className="font-semibold text-slate-900 dark:text-white mb-3 flex items-center gap-2"><Award className="h-5 w-5 text-amber-500" />Key Legal Principles</h2>
+              <ul className="space-y-2">
+                {type.keyPrinciples.map((p, i) => (
+                  <li key={i} className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400">
+                    <span className="text-amber-500 mt-0.5">•</span>{p}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {/* Practical Examples */}
+          {type.practicalExamples?.length > 0 && (
+            <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-6">
+              <h2 className="font-semibold text-slate-900 dark:text-white mb-3">Practical Examples</h2>
+              <ul className="space-y-2">
+                {type.practicalExamples.map((ex, i) => (
+                  <li key={i} className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400">
+                    <span className="text-blue-400 mt-0.5">›</span>{ex}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
 
         <div className="space-y-6">
           {/* Typical Issues */}
-          <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-5">
-            <h2 className="font-semibold text-slate-900 dark:text-white mb-3 text-sm">Typical Legal Issues</h2>
-            <ul className="space-y-1.5">
-              {typicalIssues.map((issue: string, i: number) => (
-                <li key={i} className="text-xs text-slate-600 dark:text-slate-400 flex items-start gap-1.5"><span className="text-blue-400 mt-0.5">›</span>{issue}</li>
-              ))}
-            </ul>
-          </div>
+          {type.typicalIssues?.length > 0 && (
+            <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+              <h2 className="font-semibold text-slate-900 dark:text-white mb-3 text-sm">Typical Legal Issues</h2>
+              <ul className="space-y-1.5">
+                {type.typicalIssues.map((issue, i) => (
+                  <li key={i} className="text-xs text-slate-600 dark:text-slate-400 flex items-start gap-1.5"><span className="text-blue-400 mt-0.5">›</span>{issue}</li>
+                ))}
+              </ul>
+            </div>
+          )}
           {/* Common Evidence */}
-          <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-5">
-            <h2 className="font-semibold text-slate-900 dark:text-white mb-3 text-sm">Common Evidence</h2>
-            <ul className="space-y-1.5">
-              {commonEvidence.map((ev: string, i: number) => (
-                <li key={i} className="text-xs text-slate-600 dark:text-slate-400 flex items-start gap-1.5"><span className="text-emerald-400 mt-0.5">✓</span>{ev}</li>
-              ))}
-            </ul>
-          </div>
+          {type.commonEvidence?.length > 0 && (
+            <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+              <h2 className="font-semibold text-slate-900 dark:text-white mb-3 text-sm">Common Evidence</h2>
+              <ul className="space-y-1.5">
+                {type.commonEvidence.map((ev, i) => (
+                  <li key={i} className="text-xs text-slate-600 dark:text-slate-400 flex items-start gap-1.5"><span className="text-emerald-400 mt-0.5">✓</span>{ev}</li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </div>
 
       {/* Cases */}
       <div>
-        <h2 className="font-semibold text-slate-900 dark:text-white mb-4">Cases in {name}</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {MOCK_CASES.map((c) => <CaseCard key={c.id} caseItem={c} />)}
-        </div>
+        <h2 className="font-semibold text-slate-900 dark:text-white mb-4">Cases in {type.name}</h2>
+        {typeCases.length === 0 ? (
+          <p className="text-sm text-slate-500 dark:text-slate-400">No cases available yet.</p>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {typeCases.map((c) => <CaseCard key={c.id} caseItem={c} />)}
+          </div>
+        )}
       </div>
     </div>
   );

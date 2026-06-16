@@ -6,7 +6,10 @@ export class LitigationService {
   constructor(private readonly prisma: PrismaService) {}
 
   async findAll(params: { category?: string; search?: string; page?: number; limit?: number }) {
-    const { category, search, page = 1, limit = 50 } = params;
+    const { category, search } = params;
+    // Query params arrive as strings; coerce to numbers for Prisma take/skip.
+    const page = Number(params.page) || 1;
+    const limit = Number(params.limit) || 50;
     const skip = (page - 1) * limit;
 
     const where: any = {};

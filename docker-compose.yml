@@ -87,7 +87,9 @@ services:
     env_file:
       - .env
     environment:
-      - NEXT_PUBLIC_API_URL=http://backend:3001
+      # Client-rendered pages call the API from the browser, so this must be a
+      # host-reachable URL (not the in-network http://backend:3001).
+      - NEXT_PUBLIC_API_URL=http://localhost:3001
       - PORT=3000
       - NODE_ENV=production
 
