@@ -59,6 +59,12 @@ const DEMO_ACCOUNTS: Array<{ email: string; password: string; user: User }> = [
     password: 'Student123!',
     user: { id: 'demo-student', email: 'student@example.com', name: 'Demo Student', role: 'STUDENT', isActive: true, mfaEnabled: false, organization: 'Law School', jobTitle: 'Student' },
   },
+  {
+    // Simple dummy account for quick testing of the deployed app.
+    email: 'test@test.com',
+    password: 'test1234',
+    user: { id: 'demo-test', email: 'test@test.com', name: 'Test User', role: 'STUDENT', isActive: true, mfaEnabled: false, organization: 'LitigationPro', jobTitle: 'Tester' },
+  },
 ];
 
 function makeDemoJwt(user: User): string {

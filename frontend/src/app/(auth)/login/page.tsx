@@ -141,7 +141,10 @@ export default function LoginPage() {
 
           <div className="mt-4 pt-4 border-t border-gray-100 text-center">
             <p className="text-xs text-gray-400">
-              Demo: admin@litigationplatform.com / Admin123!@#
+              Test login: test@test.com / test1234
+            </p>
+            <p className="text-xs text-gray-400 mt-1">
+              Also: admin@litigationplatform.com / Admin123!@#
             </p>
           </div>
         </div>
