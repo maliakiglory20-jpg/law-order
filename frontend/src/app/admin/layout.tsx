@@ -14,14 +14,32 @@ const adminNav = [
 ];
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
-  const { user, isAuthenticated } = useAuthStore();
+  const { user, isAuthenticated, isInitialized, initializeAuth } = useAuthStore();
   const router = useRouter();
 
   useEffect(() => {
+    initializeAuth();
+  }, [initializeAuth]);
+
+  useEffect(() => {
+    // Wait until auth is initialized before deciding whether to redirect.
+    if (!isInitialized) return;
     if (!isAuthenticated || !['SUPER_ADMIN', 'ADMIN'].includes(user?.role ?? '')) {
       router.replace('/dashboard');
     }
-  }, [isAuthenticated, user, router]);
+  }, [isInitialized, isAuthenticated, user, router]);
+
+  if (!isInitialized) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-slate-900">
+        <div className="h-10 w-10 rounded-full border-4 border-slate-700 border-t-amber-400 animate-spin" />
+      </div>
+    );
+  }
+
+  if (!isAuthenticated || !['SUPER_ADMIN', 'ADMIN'].includes(user?.role ?? '')) {
+    return null;
+  }
 
   return (
     <div className="min-h-screen bg-slate-900 text-white flex">

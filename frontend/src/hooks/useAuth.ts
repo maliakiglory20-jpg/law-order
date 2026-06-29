@@ -5,12 +5,13 @@ import { useAuthStore } from '@/store';
 import { hasRole } from '@/lib/auth';
 
 export function useAuth() {
-  const { user, isAuthenticated, isLoading, login, register, logout, initializeAuth } = useAuthStore();
+  const { user, isAuthenticated, isLoading, isInitialized, login, register, logout, initializeAuth } = useAuthStore();
 
   return {
     user,
     isAuthenticated,
     isLoading,
+    isInitialized,
     login,
     register,
     logout,
@@ -22,18 +23,21 @@ export function useAuth() {
 }
 
 export function useRequireAuth(redirectTo = '/login') {
-  const { isAuthenticated, isLoading, initializeAuth } = useAuthStore();
+  const { isAuthenticated, isInitialized, initializeAuth } = useAuthStore();
   const router = useRouter();
 
   useEffect(() => {
-    initializeAuth().then(() => {
-      if (!isAuthenticated && !isLoading) {
-        router.push(redirectTo);
-      }
-    });
-  }, [isAuthenticated, isLoading, router, redirectTo, initializeAuth]);
+    initializeAuth();
+  }, [initializeAuth]);
 
-  return { isAuthenticated, isLoading };
+  useEffect(() => {
+    // Redirect only after auth has settled (avoids a stale-closure false redirect).
+    if (isInitialized && !isAuthenticated) {
+      router.push(redirectTo);
+    }
+  }, [isInitialized, isAuthenticated, redirectTo, router]);
+
+  return { isAuthenticated, isInitialized };
 }
 
 export function useRequireRole(requiredRole: string, redirectTo = '/dashboard') {

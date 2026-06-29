@@ -6,7 +6,7 @@ import Sidebar from '@/components/layout/Sidebar';
 import { useAuthStore } from '@/store';
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
-  const { isAuthenticated, isLoading, initializeAuth } = useAuthStore();
+  const { isAuthenticated, isInitialized, initializeAuth } = useAuthStore();
   const router = useRouter();
 
   useEffect(() => {
@@ -14,12 +14,14 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   }, [initializeAuth]);
 
   useEffect(() => {
-    if (!isLoading && !isAuthenticated) {
+    // Only redirect once auth has finished initializing, otherwise we bounce
+    // authenticated users to /login before their session is restored.
+    if (isInitialized && !isAuthenticated) {
       router.push('/login');
     }
-  }, [isAuthenticated, isLoading, router]);
+  }, [isAuthenticated, isInitialized, router]);
 
-  if (isLoading) {
+  if (!isInitialized) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="flex flex-col items-center gap-3">

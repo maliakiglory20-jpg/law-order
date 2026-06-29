@@ -8,6 +8,8 @@ interface AuthState {
   user: User | null;
   isAuthenticated: boolean;
   isLoading: boolean;
+  /** True once initializeAuth has finished resolving the current session. */
+  isInitialized: boolean;
   login: (email: string, password: string, mfaToken?: string) => Promise<any>;
   register: (data: { email: string; password: string; name: string; organization?: string; jobTitle?: string }) => Promise<void>;
   logout: () => Promise<void>;
@@ -21,6 +23,7 @@ export const useAuthStore = create<AuthState>()(
       user: null,
       isAuthenticated: false,
       isLoading: false,
+      isInitialized: false,
 
       login: async (email, password, mfaToken) => {
         set({ isLoading: true });
@@ -80,14 +83,27 @@ export const useAuthStore = create<AuthState>()(
       },
 
       initializeAuth: async () => {
-        const accessToken = localStorage.getItem('accessToken');
-        if (!accessToken) return;
+        // Always resolve to isInitialized:true so route guards know auth is settled.
+        const finish = (extra: Partial<AuthState> = {}) =>
+          set({ ...extra, isLoading: false, isInitialized: true } as Partial<AuthState>);
 
+        if (typeof window === 'undefined') {
+          finish();
+          return;
+        }
+
+        const accessToken = localStorage.getItem('accessToken');
+        if (!accessToken) {
+          finish({ user: null, isAuthenticated: false });
+          return;
+        }
+
+        set({ isLoading: true });
         try {
           const payload = JSON.parse(atob(accessToken.split('.')[1]));
           if (Date.now() >= payload.exp * 1000) {
             clearTokens();
-            set({ user: null, isAuthenticated: false });
+            finish({ user: null, isAuthenticated: false });
             return;
           }
 
@@ -95,16 +111,16 @@ export const useAuthStore = create<AuthState>()(
           if (accessToken.endsWith('.demo')) {
             const storedUser = localStorage.getItem('user');
             if (storedUser) {
-              set({ user: JSON.parse(storedUser), isAuthenticated: true });
+              finish({ user: JSON.parse(storedUser), isAuthenticated: true });
               return;
             }
           }
 
           const response = await authApi.getMe();
-          set({ user: response.data, isAuthenticated: true });
+          finish({ user: response.data, isAuthenticated: true });
         } catch {
           clearTokens();
-          set({ user: null, isAuthenticated: false });
+          finish({ user: null, isAuthenticated: false });
         }
       },
     }),
