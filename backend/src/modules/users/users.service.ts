@@ -7,7 +7,9 @@ export class UsersService {
   constructor(private readonly prisma: PrismaService) {}
 
   async findAll(params: { page?: number; limit?: number; search?: string; role?: string }) {
-    const { page = 1, limit = 20, search, role } = params;
+    const { search, role } = params;
+    const page = Number(params.page) || 1;
+    const limit = Number(params.limit) || 20;
     const skip = (page - 1) * limit;
 
     const where: any = {};

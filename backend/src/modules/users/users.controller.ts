@@ -1,4 +1,4 @@
-import { Controller, Get, Put, Patch, Body, Param, Query, UseGuards, Request } from '@nestjs/common';
+import { Controller, Get, Put, Patch, Body, Param, Query, UseGuards, Request, ForbiddenException } from '@nestjs/common';
 import { ApiTags, ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
 import { UsersService } from './users.service';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
@@ -26,8 +26,12 @@ export class UsersController {
   }
 
   @Get(':id')
-  @ApiOperation({ summary: 'Get user by ID' })
-  findOne(@Param('id') id: string) {
+  @ApiOperation({ summary: 'Get user by ID (self or admin only)' })
+  findOne(@Param('id') id: string, @Request() req: any) {
+    const isAdmin = ['ADMIN', 'SUPER_ADMIN'].includes(req.user?.role);
+    if (!isAdmin && req.user?.id !== id) {
+      throw new ForbiddenException('You can only view your own profile');
+    }
     return this.usersService.findOne(id);
   }
 

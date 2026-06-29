@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException, ForbiddenException } from '@nestjs/common';
 import { PrismaService } from '../../prisma.service';
 
 @Injectable()
@@ -22,8 +22,14 @@ export class DocumentsService {
     return this.prisma.document.create({ data });
   }
 
-  async delete(id: string) {
+  async delete(id: string, user?: { id: string; role: string }) {
     const doc = await this.findOne(id);
+    if (user) {
+      const isAdmin = user.role === 'ADMIN' || user.role === 'SUPER_ADMIN';
+      if (!isAdmin && doc.uploadedBy !== user.id) {
+        throw new ForbiddenException('You can only delete documents you uploaded');
+      }
+    }
     return this.prisma.document.delete({ where: { id } });
   }
 }

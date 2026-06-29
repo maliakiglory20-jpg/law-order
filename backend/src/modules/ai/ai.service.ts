@@ -1,4 +1,4 @@
-import { Injectable, Logger, ServiceUnavailableException } from '@nestjs/common';
+import { Injectable, Logger, ServiceUnavailableException, NotFoundException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import Anthropic from '@anthropic-ai/sdk';
 import { PrismaService } from '../../prisma.service';
@@ -34,7 +34,7 @@ export class AiService {
       include: { litigationType: true, parties: true },
     });
 
-    if (!caseItem) throw new Error('Case not found');
+    if (!caseItem) throw new NotFoundException('Case not found');
 
     const prompt = `You are a legal education expert. Please provide a clear, educational summary of the following legal case for law students and legal professionals.
 
@@ -73,7 +73,7 @@ Format your response in clear sections.`;
   async explainRuling(caseId: string, question?: string): Promise<{ explanation: string }> {
     const client = this.ensureClient();
     const caseItem = await this.prisma.case.findUnique({ where: { id: caseId } });
-    if (!caseItem) throw new Error('Case not found');
+    if (!caseItem) throw new NotFoundException('Case not found');
 
     const specificQuestion = question || 'Explain the judicial reasoning and legal standards applied in this ruling.';
 
@@ -198,7 +198,7 @@ Return ONLY valid JSON, no other text.`;
       where: { id: caseId },
       include: { documents: true, litigationType: true },
     });
-    if (!caseItem) throw new Error('Case not found');
+    if (!caseItem) throw new NotFoundException('Case not found');
 
     const prompt = `You are a legal expert analyzing evidence in a court case for educational purposes.
 
@@ -230,7 +230,7 @@ Format this as a structured educational analysis.`;
       where: { id: caseId },
       include: { litigationType: true, parties: true },
     });
-    if (!caseItem) throw new Error('Case not found');
+    if (!caseItem) throw new NotFoundException('Case not found');
 
     const systemPrompt = `You are an expert legal educator helping a student understand the case "${caseItem.name}".
 

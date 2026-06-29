@@ -6,7 +6,10 @@ export class QuizService {
   constructor(private readonly prisma: PrismaService) {}
 
   async findAll(params: { litigationTypeId?: string; caseId?: string; page?: number; limit?: number }) {
-    const { litigationTypeId, caseId, page = 1, limit = 20 } = params;
+    const { litigationTypeId, caseId } = params;
+    // Query params arrive as strings; coerce for Prisma take/skip.
+    const page = Number(params.page) || 1;
+    const limit = Number(params.limit) || 20;
     const skip = (page - 1) * limit;
 
     const where: any = { isPublished: true };

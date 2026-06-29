@@ -14,8 +14,10 @@ import { RegisterDto } from './dto/register.dto';
 import { LoginDto } from './dto/login.dto';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { Public } from '../../common/decorators/roles.decorator';
+import { CustomThrottleGuard } from '../../common/guards/throttle.guard';
 
 @ApiTags('Auth')
+@UseGuards(CustomThrottleGuard) // rate-limit auth endpoints (brute-force protection)
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}

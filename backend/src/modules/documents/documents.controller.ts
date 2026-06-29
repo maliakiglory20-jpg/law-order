@@ -26,8 +26,8 @@ export class DocumentsController {
 
   @Delete(':id')
   @ApiBearerAuth('JWT-auth')
-  @ApiOperation({ summary: 'Delete document' })
-  delete(@Param('id') id: string) {
-    return this.documentsService.delete(id);
+  @ApiOperation({ summary: 'Delete document (uploader or admin only)' })
+  delete(@Param('id') id: string, @Request() req: any) {
+    return this.documentsService.delete(id, req.user);
   }
 }

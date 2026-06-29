@@ -105,13 +105,14 @@ export class AnalyticsService {
     return { progress, attempts, weeklyData };
   }
 
-  async getLeaderboard(limit = 20) {
+  async getLeaderboard(limit: number = 20) {
+    const take = Number(limit) || 20;
     const topUsers = await this.prisma.quizAttempt.groupBy({
       by: ['userId'],
       _avg: { score: true },
       _count: { id: true },
       orderBy: { _avg: { score: 'desc' } },
-      take: limit,
+      take,
     });
 
     const userIds = topUsers.map((u) => u.userId);

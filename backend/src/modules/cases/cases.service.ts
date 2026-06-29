@@ -148,10 +148,10 @@ export class CasesService {
     return this.prisma.note.create({ data: { userId, caseId, content } });
   }
 
-  async getFeaturedCases(limit = 6) {
+  async getFeaturedCases(limit: number = 6) {
     return this.prisma.case.findMany({
       where: { isFeatured: true, isPublished: true },
-      take: limit,
+      take: Number(limit) || 6,
       include: {
         litigationType: { select: { name: true, slug: true, color: true, icon: true } },
       },

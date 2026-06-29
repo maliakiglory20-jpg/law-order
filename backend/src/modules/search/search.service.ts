@@ -5,8 +5,12 @@ import { PrismaService } from '../../prisma.service';
 export class SearchService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async search(query: string, filters?: { type?: string; jurisdiction?: string; year?: number }, page = 1, limit = 20) {
-    const skip = (page - 1) * limit;
+  async search(query: string, filters?: { type?: string; jurisdiction?: string; year?: number }, page: number = 1, limit: number = 20) {
+    // Query params arrive as strings; coerce for Prisma take/skip and Int filters.
+    const pageNum = Number(page) || 1;
+    const limitNum = Number(limit) || 20;
+    const yearNum = filters?.year ? Number(filters.year) : undefined;
+    const skip = (pageNum - 1) * limitNum;
     const searchLower = query.toLowerCase();
 
     const [cases, litigationTypes, quizzes] = await this.prisma.$transaction([
@@ -22,9 +26,9 @@ export class SearchService {
             { jurisdiction: { contains: query, mode: 'insensitive' } },
           ],
           ...(filters?.jurisdiction && { jurisdiction: { contains: filters.jurisdiction, mode: 'insensitive' } }),
-          ...(filters?.year && { year: filters.year }),
+          ...(yearNum && { year: yearNum }),
         },
-        take: Math.min(limit, 10),
+        take: Math.min(limitNum, 10),
         skip,
         include: {
           litigationType: { select: { name: true, slug: true, color: true } },
