@@ -37,7 +37,9 @@ export class HttpExceptionFilter implements ExceptionFilter {
         }
       }
     } else if (exception instanceof Error) {
-      message = exception.message;
+      // Do NOT expose the raw error message to the client (it can leak DB
+      // schema, query details, etc.). Log it server-side and return a generic
+      // message — `message` stays 'Internal server error'.
       this.logger.error(
         `Unhandled exception: ${exception.message}`,
         exception.stack,

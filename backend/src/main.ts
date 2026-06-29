@@ -42,13 +42,25 @@ async function bootstrap() {
     'http://localhost:3001',
     ...configuredOrigins,
   ]);
+  const isVercelOrigin = (origin: string): boolean => {
+    try {
+      return /\.vercel\.app$/.test(new URL(origin).hostname);
+    } catch {
+      // Malformed Origin header — treat as not allowed rather than throwing.
+      return false;
+    }
+  };
   app.enableCors({
     origin: (origin, callback) => {
       // Allow non-browser clients (no origin) and any configured/Vercel origin.
-      if (!origin || allowedOrigins.has(origin) || /\.vercel\.app$/.test(new URL(origin).hostname)) {
+      if (!origin || allowedOrigins.has(origin) || isVercelOrigin(origin)) {
         return callback(null, true);
       }
-      return callback(new Error(`Not allowed by CORS: ${origin}`));
+      // Deny without throwing: the browser blocks the response (no
+      // Access-Control-Allow-Origin header) while the server still replies
+      // normally. Returning an Error here would surface as a 500 for every
+      // disallowed/malformed Origin.
+      return callback(null, false);
     },
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
