@@ -10,6 +10,7 @@ import { QuizModule } from './modules/quiz/quiz.module';
 import { AnalyticsModule } from './modules/analytics/analytics.module';
 import { SearchModule } from './modules/search/search.module';
 import { AiModule } from './modules/ai/ai.module';
+import { GlossaryModule } from './modules/glossary/glossary.module';
 import { PrismaService } from './prisma.service';
 
 @Module({
@@ -44,6 +45,7 @@ import { PrismaService } from './prisma.service';
     AnalyticsModule,
     SearchModule,
     AiModule,
+    GlossaryModule,
   ],
   providers: [PrismaService],
   exports: [PrismaService],

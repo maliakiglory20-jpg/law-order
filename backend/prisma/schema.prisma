@@ -296,3 +296,19 @@ model AuditLog {
   @@index([createdAt])
   @@map("audit_logs")
 }
+
+model GlossaryTerm {
+  id           String   @id @default(uuid())
+  term         String   @unique
+  slug         String   @unique
+  definition   String   @db.Text
+  category     String   @default("General")
+  example      String?  @db.Text
+  relatedTerms String[]
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([category])
+  @@index([term])
+  @@map("glossary_terms")
+}

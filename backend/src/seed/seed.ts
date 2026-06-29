@@ -2,6 +2,7 @@ import { PrismaClient } from '@prisma/client';
 import * as bcrypt from 'bcryptjs';
 import { litigationTypes } from './litigation-types';
 import { landmarkCases } from './cases';
+import { glossaryTerms } from './glossary';
 
 const prisma = new PrismaClient();
 
@@ -135,6 +136,46 @@ async function main() {
       ],
     });
   }
+
+  // Seed glossary (Legal Dictionary)
+  console.log('Seeding glossary terms...');
+  await prisma.glossaryTerm.deleteMany();
+  const slugify = (s: string) =>
+    s
+      .toLowerCase()
+      .normalize('NFKD')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '') || 'term';
+  const seenTerms = new Set<string>();
+  const seenSlugs = new Set<string>();
+  const glossaryData = [] as Array<{
+    term: string;
+    slug: string;
+    definition: string;
+    category: string;
+    example: string | null;
+    relatedTerms: string[];
+  }>;
+  for (const t of glossaryTerms) {
+    const key = t.term.trim().toLowerCase();
+    if (seenTerms.has(key)) continue; // de-duplicate terms that appear in multiple categories
+    seenTerms.add(key);
+    const base = slugify(t.term);
+    let slug = base;
+    let n = 2;
+    while (seenSlugs.has(slug)) slug = `${base}-${n++}`;
+    seenSlugs.add(slug);
+    glossaryData.push({
+      term: t.term.trim(),
+      slug,
+      definition: t.definition,
+      category: t.category,
+      example: t.example ?? null,
+      relatedTerms: t.relatedTerms ?? [],
+    });
+  }
+  await prisma.glossaryTerm.createMany({ data: glossaryData });
+  console.log(`  Created ${glossaryData.length} glossary terms`);
 
   // Create sample quizzes
   console.log('Creating sample quizzes...');

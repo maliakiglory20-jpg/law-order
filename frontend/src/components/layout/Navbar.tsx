@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import {
   Scale, Search, Bell, Menu, X, BookOpen, Briefcase, Brain, BarChart3,
-  User, Settings, LogOut, Shield, ChevronDown,
+  User, Settings, LogOut, Shield, ChevronDown, BookA,
 } from 'lucide-react';
 import { useAuthStore } from '@/store';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -13,6 +13,7 @@ import { cn } from '@/lib/utils';
 
 const navLinks = [
   { href: '/library', label: 'Library', icon: BookOpen },
+  { href: '/dictionary', label: 'Dictionary', icon: BookA },
   { href: '/cases', label: 'Cases', icon: Briefcase },
   { href: '/quizzes', label: 'Quizzes', icon: Brain },
   { href: '/analytics', label: 'Analytics', icon: BarChart3 },

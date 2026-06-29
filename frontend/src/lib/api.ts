@@ -156,4 +156,12 @@ export const aiApi = {
     api.post('/ai/generate-quiz', params),
 };
 
+// Glossary (Legal Dictionary) API
+export const glossaryApi = {
+  getAll: (params?: { search?: string; category?: string; letter?: string; page?: number; limit?: number }) =>
+    api.get('/glossary', { params }),
+  getCategories: () => api.get('/glossary/categories'),
+  getBySlug: (slug: string) => api.get(`/glossary/${slug}`),
+};
+
 export default api;

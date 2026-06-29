@@ -221,3 +221,15 @@ export interface SearchResults {
   };
   total: number;
 }
+
+export interface GlossaryTerm {
+  id: string;
+  term: string;
+  slug: string;
+  definition: string;
+  category: string;
+  example?: string | null;
+  relatedTerms: string[];
+  createdAt: string;
+  updatedAt: string;
+}

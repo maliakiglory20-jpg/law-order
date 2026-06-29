@@ -3,7 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
-  BookOpen, Briefcase, Brain, BarChart3, Bookmark, Search, LayoutDashboard, X,
+  BookOpen, Briefcase, Brain, BarChart3, Bookmark, Search, LayoutDashboard, X, BookA,
 } from 'lucide-react';
 import { useAuthStore, useUIStore } from '@/store';
 import { Badge } from '@/components/ui/badge';
@@ -12,6 +12,7 @@ import { cn } from '@/lib/utils';
 const navItems = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/library', label: 'Library', icon: BookOpen },
+  { href: '/dictionary', label: 'Legal Dictionary', icon: BookA },
   { href: '/cases', label: 'Cases', icon: Briefcase },
   { href: '/quizzes', label: 'Quizzes', icon: Brain },
   { href: '/analytics', label: 'Analytics', icon: BarChart3 },
