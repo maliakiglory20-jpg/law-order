@@ -158,7 +158,7 @@ export const aiApi = {
 
 // Glossary (Legal Dictionary) API
 export const glossaryApi = {
-  getAll: (params?: { search?: string; category?: string; letter?: string; page?: number; limit?: number }) =>
+  getAll: (params?: { search?: string; category?: string; letter?: string; difficulty?: string; essential?: boolean; page?: number; limit?: number }) =>
     api.get('/glossary', { params }),
   getCategories: () => api.get('/glossary/categories'),
   getBySlug: (slug: string) => api.get(`/glossary/${slug}`),

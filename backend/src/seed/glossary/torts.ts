@@ -8,6 +8,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Torts',
     example: 'A driver who runs a red light and injures a pedestrian has committed a tort.',
     relatedTerms: ['Negligence', 'Intentional Tort', 'Strict Liability', 'Damages'],
+    difficulty: 'Beginner',
+    isEssential: true,
   },
   {
     term: 'Negligence',
@@ -16,6 +18,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Torts',
     example: 'A surgeon who leaves a surgical instrument inside a patient may be liable for negligence.',
     relatedTerms: ['Duty of Care', 'Breach of Duty', 'Causation', 'Damages'],
+    difficulty: 'Beginner',
+    isEssential: true,
   },
   {
     term: 'Duty of Care',
@@ -24,6 +28,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Torts',
     example: 'A property owner owes a duty of care to lawful visitors to maintain reasonably safe premises.',
     relatedTerms: ['Negligence', 'Breach of Duty', 'Foreseeability', 'Standard of Care'],
+    difficulty: 'Beginner',
+    isEssential: true,
   },
   {
     term: 'Breach of Duty',
@@ -32,6 +38,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Torts',
     example: 'A pharmacist who dispenses the wrong medication has breached the duty of care owed to the patient.',
     relatedTerms: ['Duty of Care', 'Negligence', 'Standard of Care', 'Causation'],
+    difficulty: 'Beginner',
+    isEssential: true,
   },
   {
     term: 'Causation',
@@ -40,14 +48,18 @@ const terms: GlossaryTermSeed[] = [
     category: 'Torts',
     example: 'A plaintiff must show that the defendant\'s negligent act actually and proximately caused the harm suffered.',
     relatedTerms: ['But-For Causation', 'Proximate Cause', 'Negligence', 'Damages'],
+    difficulty: 'Beginner',
+    isEssential: true,
   },
   {
     term: 'Proximate Cause',
     definition:
       'The legal cause of harm—a cause that is sufficiently close and foreseeable to justify holding the defendant liable. Even if a defendant\'s act was the actual cause, liability may be cut off if the harm was too remote or unforeseeable.',
     category: 'Torts',
-    example: 'If a negligently started fire spreads to a neighbor\'s house, the arsonist is the proximate cause of the neighbor\'s loss.',
+    example: 'If a negligently started fire spreads to a neighbor\'s house, the person who started the fire is the proximate cause of the neighbor\'s loss.',
     relatedTerms: ['But-For Causation', 'Foreseeability', 'Causation', 'Superseding Cause'],
+    difficulty: 'Advanced',
+    isEssential: false,
   },
   {
     term: 'But-For Causation',
@@ -56,6 +68,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Torts',
     example: 'But for the pharmacist\'s error in filling the prescription, the patient would not have been harmed.',
     relatedTerms: ['Causation', 'Proximate Cause', 'Negligence', 'Substantial Factor Test'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Damages',
@@ -64,14 +78,18 @@ const terms: GlossaryTermSeed[] = [
     category: 'Torts',
     example: 'A plaintiff injured in a car accident may recover damages for medical bills, lost wages, and pain and suffering.',
     relatedTerms: ['Compensatory Damages', 'Punitive Damages', 'Negligence', 'Wrongful Death'],
+    difficulty: 'Beginner',
+    isEssential: true,
   },
   {
     term: 'Strict Liability',
     definition:
       'Liability imposed on a defendant regardless of fault or intent. In strict liability torts, the plaintiff need not prove negligence—only that the defendant engaged in the activity and that it caused the harm.',
     category: 'Torts',
-    example: 'An owner of a wild animal is strictly liable if the animal injures a person, even if the owner took precautions.',
+    example: 'An owner of a wild animal is strictly liable if the animal injures a person, even if the owner took every precaution.',
     relatedTerms: ['Products Liability', 'Abnormally Dangerous Activities', 'Negligence', 'Tort'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Products Liability',
@@ -80,22 +98,28 @@ const terms: GlossaryTermSeed[] = [
     category: 'Torts',
     example: 'A consumer injured by a car with a defectively designed brake system may sue the manufacturer under products liability.',
     relatedTerms: ['Strict Liability', 'Negligence', 'Breach of Warranty', 'Design Defect'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Res Ipsa Loquitur',
     definition:
       'Latin for "the thing speaks for itself." A doctrine allowing negligence to be inferred from the very nature of the accident or injury, without direct evidence of the defendant\'s specific negligent act, when the harm ordinarily would not occur without negligence.',
     category: 'Torts',
-    example: 'A surgical sponge left inside a patient\'s abdomen invokes res ipsa loquitur—such events do not occur absent negligence.',
+    example: 'A surgical sponge left inside a patient\'s abdomen after surgery suggests negligence on its own—such things don\'t happen unless someone was careless.',
     relatedTerms: ['Negligence', 'Breach of Duty', 'Burden of Proof', 'Causation'],
+    difficulty: 'Advanced',
+    isEssential: false,
   },
   {
     term: 'Comparative Negligence',
     definition:
       'A system that apportions fault between the plaintiff and defendant and reduces the plaintiff\'s recovery proportionally to their share of fault. Most states use either pure or modified comparative negligence.',
     category: 'Torts',
-    example: 'If a plaintiff is 30% at fault for an accident and damages are $100,000, recovery is reduced to $70,000 under comparative negligence.',
+    example: 'If a plaintiff is 30% at fault for an accident and damages are $100,000, their recovery is reduced to $70,000 under comparative negligence.',
     relatedTerms: ['Contributory Negligence', 'Negligence', 'Assumption of Risk', 'Apportionment'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Contributory Negligence',
@@ -104,6 +128,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Torts',
     example: 'Under contributory negligence, a plaintiff who was even 1% at fault for their own injuries recovers nothing.',
     relatedTerms: ['Comparative Negligence', 'Assumption of Risk', 'Negligence', 'Last Clear Chance'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Assumption of Risk',
@@ -112,6 +138,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Torts',
     example: 'A spectator at a baseball game assumes the risk of being struck by a foul ball.',
     relatedTerms: ['Comparative Negligence', 'Contributory Negligence', 'Consent', 'Volenti Non Fit Injuria'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Intentional Tort',
@@ -120,6 +148,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Torts',
     example: 'Punching someone in the face is an intentional tort (battery) because the actor intends the harmful contact.',
     relatedTerms: ['Battery', 'Assault', 'False Imprisonment', 'Negligence'],
+    difficulty: 'Beginner',
+    isEssential: true,
   },
   {
     term: 'Battery',
@@ -128,6 +158,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Torts',
     example: 'Striking a person during an argument constitutes battery even if the victim was not seriously hurt.',
     relatedTerms: ['Assault', 'Intentional Tort', 'Consent', 'False Imprisonment'],
+    difficulty: 'Beginner',
+    isEssential: false,
   },
   {
     term: 'Assault',
@@ -136,6 +168,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Torts',
     example: 'Raising a fist threateningly at someone who sees it and fears being struck constitutes assault.',
     relatedTerms: ['Battery', 'Intentional Tort', 'Apprehension', 'Threat'],
+    difficulty: 'Beginner',
+    isEssential: false,
   },
   {
     term: 'False Imprisonment',
@@ -144,6 +178,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Torts',
     example: 'Locking an employee in a store room during an interrogation without their consent is false imprisonment.',
     relatedTerms: ['Intentional Tort', 'Battery', 'Assault', 'Consent'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Defamation',
@@ -152,6 +188,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Torts',
     example: 'Falsely telling a person\'s employer that the person embezzled money is defamation.',
     relatedTerms: ['Libel', 'Slander', 'Publication', 'Actual Malice'],
+    difficulty: 'Beginner',
+    isEssential: true,
   },
   {
     term: 'Libel',
@@ -160,6 +198,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Torts',
     example: 'Publishing a false newspaper article accusing a politician of accepting bribes is libel.',
     relatedTerms: ['Defamation', 'Slander', 'Publication', 'Actual Malice'],
+    difficulty: 'Beginner',
+    isEssential: false,
   },
   {
     term: 'Slander',
@@ -168,14 +208,18 @@ const terms: GlossaryTermSeed[] = [
     category: 'Torts',
     example: 'Falsely telling neighbors that someone is a convicted felon is slander.',
     relatedTerms: ['Defamation', 'Libel', 'Slander Per Se', 'Publication'],
+    difficulty: 'Beginner',
+    isEssential: false,
   },
   {
     term: 'Invasion of Privacy',
     definition:
       'A family of torts protecting a person\'s right to be left alone, including intrusion upon seclusion, public disclosure of private facts, false light, and appropriation of name or likeness.',
     category: 'Torts',
-    example: 'Secretly recording someone in their private home and distributing the footage is an invasion of privacy by intrusion upon seclusion.',
+    example: 'Secretly recording someone in their private home and distributing the footage is an invasion of privacy.',
     relatedTerms: ['Defamation', 'Intentional Tort', 'False Light', 'Appropriation'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Nuisance',
@@ -184,6 +228,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Torts',
     example: 'A factory emitting noxious fumes that prevent neighboring residents from enjoying their yards creates a private nuisance.',
     relatedTerms: ['Trespass', 'Private Nuisance', 'Public Nuisance', 'Strict Liability'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Trespass',
@@ -192,6 +238,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Torts',
     example: 'Walking across a neighbor\'s fenced yard without permission is trespass to land, even if no damage is caused.',
     relatedTerms: ['Nuisance', 'Conversion', 'Intentional Tort', 'Trespass to Chattels'],
+    difficulty: 'Beginner',
+    isEssential: false,
   },
   {
     term: 'Conversion',
@@ -200,22 +248,28 @@ const terms: GlossaryTermSeed[] = [
     category: 'Torts',
     example: 'Stealing or destroying another person\'s laptop constitutes conversion.',
     relatedTerms: ['Trespass to Chattels', 'Trespass', 'Intentional Tort', 'Replevin'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Vicarious Liability',
     definition:
       'The imputation of liability to one person for the tortious acts of another based on their relationship, such as employer-employee or principal-agent. The vicariously liable party need not be personally at fault.',
     category: 'Torts',
-    example: 'An employer is vicariously liable when an employee negligently injures a customer while performing job duties.',
+    example: 'An employer is held responsible when an employee negligently injures a customer while on the job, even though the employer did nothing wrong personally.',
     relatedTerms: ['Respondeat Superior', 'Agency', 'Joint and Several Liability', 'Negligence'],
+    difficulty: 'Advanced',
+    isEssential: false,
   },
   {
     term: 'Respondeat Superior',
     definition:
       'Latin for "let the master answer." The doctrine holding an employer liable for torts committed by an employee acting within the scope of employment. It is the primary basis of vicarious liability.',
     category: 'Torts',
-    example: 'A delivery company is liable under respondeat superior when its driver negligently causes an accident while making deliveries.',
+    example: 'A delivery company is liable when its driver negligently causes an accident while making deliveries on company time.',
     relatedTerms: ['Vicarious Liability', 'Scope of Employment', 'Agency', 'Negligence'],
+    difficulty: 'Advanced',
+    isEssential: false,
   },
   {
     term: 'Joint and Several Liability',
@@ -224,6 +278,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Torts',
     example: 'Two drivers whose combined negligence causes an accident may be jointly and severally liable, meaning the injured party can recover all damages from either driver.',
     relatedTerms: ['Vicarious Liability', 'Contribution', 'Comparative Negligence', 'Indemnification'],
+    difficulty: 'Advanced',
+    isEssential: false,
   },
   {
     term: 'Wrongful Death',
@@ -232,6 +288,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Torts',
     example: 'The family of a pedestrian killed by a drunk driver may bring a wrongful death action against the driver.',
     relatedTerms: ['Damages', 'Negligence', 'Survival Action', 'Punitive Damages'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Punitive Damages',
@@ -240,6 +298,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Torts',
     example: 'A court may award punitive damages against a company that knowingly sold a dangerous product to maximize profits.',
     relatedTerms: ['Damages', 'Compensatory Damages', 'Negligence', 'Gross Negligence'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Foreseeability',
@@ -248,6 +308,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Torts',
     example: 'It is foreseeable that leaving ice on a sidewalk could cause a pedestrian to slip and fall.',
     relatedTerms: ['Duty of Care', 'Proximate Cause', 'Negligence', 'Palsgraf Doctrine'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Intentional Infliction of Emotional Distress',
@@ -256,6 +318,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Torts',
     example: 'Repeatedly sending harassing messages to a grieving parent describing their child\'s death in graphic detail may constitute intentional infliction of emotional distress.',
     relatedTerms: ['Intentional Tort', 'Negligent Infliction of Emotional Distress', 'Battery', 'Assault'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Negligent Infliction of Emotional Distress',
@@ -264,14 +328,18 @@ const terms: GlossaryTermSeed[] = [
     category: 'Torts',
     example: 'A parent who witnesses their child being struck by a negligent driver and suffers severe emotional trauma may recover under negligent infliction of emotional distress.',
     relatedTerms: ['Intentional Infliction of Emotional Distress', 'Negligence', 'Duty of Care', 'Damages'],
+    difficulty: 'Advanced',
+    isEssential: false,
   },
   {
     term: 'Superseding Cause',
     definition:
       'An intervening act or event that breaks the chain of causation between the defendant\'s negligence and the plaintiff\'s harm, relieving the defendant of liability. The intervening cause must be unforeseeable to qualify as superseding.',
     category: 'Torts',
-    example: 'If a third party\'s criminal act intervenes between a defendant\'s negligence and the plaintiff\'s injury, the criminal act may be a superseding cause.',
+    example: 'If a third party\'s unforeseeable criminal act occurs between a defendant\'s negligence and the plaintiff\'s injury, that criminal act may cut off the defendant\'s liability.',
     relatedTerms: ['Proximate Cause', 'Causation', 'Foreseeability', 'Intervening Cause'],
+    difficulty: 'Advanced',
+    isEssential: false,
   },
   {
     term: 'Standard of Care',
@@ -280,6 +348,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Torts',
     example: 'A physician is held to the standard of care of a reasonably competent doctor in the same specialty.',
     relatedTerms: ['Duty of Care', 'Breach of Duty', 'Negligence', 'Professional Negligence'],
+    difficulty: 'Beginner',
+    isEssential: false,
   },
   {
     term: 'Trespass to Chattels',
@@ -288,6 +358,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Torts',
     example: 'Temporarily taking a neighbor\'s bicycle without permission and returning it scratched is trespass to chattels.',
     relatedTerms: ['Conversion', 'Trespass', 'Intentional Tort', 'Replevin'],
+    difficulty: 'Advanced',
+    isEssential: false,
   },
 ];
 

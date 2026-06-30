@@ -9,6 +9,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A public employee facing termination is entitled to notice of the charges and an opportunity to be heard before dismissal.',
     relatedTerms: ['Substantive Due Process', 'Fifth Amendment', 'Fourteenth Amendment', 'Notice and Hearing'],
+    difficulty: 'Beginner',
+    isEssential: true,
   },
   {
     term: 'Substantive Due Process',
@@ -18,6 +20,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'The Supreme Court relied on substantive due process to recognize a constitutional right to privacy in Griswold v. Connecticut.',
     relatedTerms: ['Procedural Due Process', 'Fundamental Rights', 'Strict Scrutiny', 'Fourteenth Amendment'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Equal Protection',
@@ -27,6 +31,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A state law that provides different criminal penalties based solely on the defendant\'s race would violate equal protection.',
     relatedTerms: ['Strict Scrutiny', 'Intermediate Scrutiny', 'Rational Basis', 'Fourteenth Amendment'],
+    difficulty: 'Beginner',
+    isEssential: true,
   },
   {
     term: 'Strict Scrutiny',
@@ -36,6 +42,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'Affirmative action programs in university admissions are evaluated under strict scrutiny because they involve racial classifications.',
     relatedTerms: ['Intermediate Scrutiny', 'Rational Basis', 'Equal Protection', 'Fundamental Rights'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Intermediate Scrutiny',
@@ -45,6 +53,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A state law providing different benefits to men and women in the military would be evaluated under intermediate scrutiny.',
     relatedTerms: ['Strict Scrutiny', 'Rational Basis', 'Equal Protection', 'Gender Discrimination'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Rational Basis Review',
@@ -54,6 +64,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'Economic regulations such as licensing requirements for professions are typically upheld under rational basis review.',
     relatedTerms: ['Strict Scrutiny', 'Intermediate Scrutiny', 'Equal Protection', 'Substantive Due Process'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Judicial Review',
@@ -61,8 +73,10 @@ const terms: GlossaryTermSeed[] = [
       'The power of federal courts to examine legislation and executive actions to determine whether they conform to the Constitution, and to invalidate those that do not. Established by the Supreme Court in Marbury v. Madison (1803).',
     category: 'Constitutional & Administrative',
     example:
-      'The Supreme Court exercised judicial review in striking down a federal statute that exceeded Congress\'s Commerce Clause authority in United States v. Lopez.',
+      'When the Supreme Court struck down a law as unconstitutional — for example, finding that Congress exceeded its authority — that is judicial review in action.',
     relatedTerms: ['Separation of Powers', 'Constitutional Supremacy', 'Marbury v. Madison', 'Supremacy Clause'],
+    difficulty: 'Beginner',
+    isEssential: true,
   },
   {
     term: 'Separation of Powers',
@@ -72,6 +86,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'Congress may pass laws, but the President may veto them, and the courts may strike them down as unconstitutional.',
     relatedTerms: ['Checks and Balances', 'Judicial Review', 'Non-Delegation Doctrine', 'Executive Power'],
+    difficulty: 'Beginner',
+    isEssential: true,
   },
   {
     term: 'Federalism',
@@ -81,6 +97,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'States retain authority to regulate intrastate commerce and to pass criminal laws, absent a conflicting federal statute.',
     relatedTerms: ['Supremacy Clause', 'Commerce Clause', 'Tenth Amendment', 'Preemption'],
+    difficulty: 'Beginner',
+    isEssential: true,
   },
   {
     term: 'Commerce Clause',
@@ -90,6 +108,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'Congress relied on the Commerce Clause to enact the Civil Rights Act of 1964, prohibiting discrimination by businesses affecting interstate commerce.',
     relatedTerms: ['Federalism', 'Supremacy Clause', 'Dormant Commerce Clause', 'Necessary and Proper Clause'],
+    difficulty: 'Beginner',
+    isEssential: true,
   },
   {
     term: 'Supremacy Clause',
@@ -99,6 +119,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A state law permitting a practice that federal environmental law prohibits is invalid under the Supremacy Clause.',
     relatedTerms: ['Preemption', 'Federalism', 'Commerce Clause', 'Judicial Review'],
+    difficulty: 'Beginner',
+    isEssential: false,
   },
   {
     term: 'Incorporation Doctrine',
@@ -108,6 +130,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'Through incorporation, the First Amendment\'s free speech protections apply to state and local governments, not only the federal government.',
     relatedTerms: ['Due Process', 'Bill of Rights', 'Fourteenth Amendment', 'State Action'],
+    difficulty: 'Advanced',
+    isEssential: false,
   },
   {
     term: 'State Action Doctrine',
@@ -117,6 +141,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A private employer\'s discriminatory hiring policy does not violate the Fourteenth Amendment because there is no state action, though it may violate federal statutes.',
     relatedTerms: ['Incorporation Doctrine', 'Fourteenth Amendment', 'Public Function Doctrine', 'Equal Protection'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'First Amendment',
@@ -126,6 +152,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A city ordinance barring peaceful protest in a public park is subject to First Amendment scrutiny as a restriction on speech in a traditional public forum.',
     relatedTerms: ['Free Speech', 'Establishment Clause', 'Free Exercise Clause', 'Incorporation Doctrine'],
+    difficulty: 'Beginner',
+    isEssential: true,
   },
   {
     term: 'Fourth Amendment',
@@ -135,6 +163,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'Police who search a home without a warrant and without an applicable exception violate the homeowner\'s Fourth Amendment rights.',
     relatedTerms: ['Exclusionary Rule', 'Probable Cause', 'Warrant Requirement', 'Fifth Amendment'],
+    difficulty: 'Beginner',
+    isEssential: false,
   },
   {
     term: 'Fifth Amendment',
@@ -144,6 +174,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A defendant who invokes the Fifth Amendment during trial cannot have that silence used against them by the prosecution.',
     relatedTerms: ['Self-Incrimination', 'Takings Clause', 'Double Jeopardy', 'Procedural Due Process'],
+    difficulty: 'Beginner',
+    isEssential: false,
   },
   {
     term: 'Qualified Immunity',
@@ -153,6 +185,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A police officer sued for excessive force may raise qualified immunity if no prior case clearly established that the specific conduct was unlawful under the circumstances.',
     relatedTerms: ['Sovereign Immunity', 'Section 1983', 'Absolute Immunity', 'Civil Rights Litigation'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Sovereign Immunity',
@@ -162,6 +196,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'Citizens may sue the federal government for personal injury claims only because Congress waived immunity through the Federal Tort Claims Act.',
     relatedTerms: ['Qualified Immunity', 'Eleventh Amendment', 'Governmental Immunity', 'Section 1983'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Standing',
@@ -171,6 +207,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'An environmental group cannot sue a polluter on behalf of the general public without showing that its members have suffered a concrete, particularized injury.',
     relatedTerms: ['Ripeness', 'Mootness', 'Justiciability', 'Article III'],
+    difficulty: 'Beginner',
+    isEssential: true,
   },
   {
     term: 'Ripeness',
@@ -178,8 +216,10 @@ const terms: GlossaryTermSeed[] = [
       'A justiciability doctrine requiring that a dispute be sufficiently developed and immediate before a court will adjudicate it. Courts examine the hardship to the parties of withholding review and the fitness of the issues for judicial resolution.',
     category: 'Constitutional & Administrative',
     example:
-      'A challenge to a regulatory scheme that has not yet been applied to the plaintiff may be dismissed as unripe.',
+      'A business that dislikes a new regulation but has not yet been subject to enforcement cannot typically sue until the regulation is actually applied to it — the case is not ripe.',
     relatedTerms: ['Standing', 'Mootness', 'Justiciability', 'Political Question Doctrine'],
+    difficulty: 'Advanced',
+    isEssential: false,
   },
   {
     term: 'Mootness',
@@ -189,6 +229,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A prisoner\'s challenge to detention conditions may become moot upon release, unless the prisoner faces a realistic risk of rearrest.',
     relatedTerms: ['Standing', 'Ripeness', 'Justiciability', 'Article III'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Political Question Doctrine',
@@ -198,6 +240,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'Courts have held that challenges to partisan gerrymandering present nonjusticiable political questions beyond federal judicial competence.',
     relatedTerms: ['Standing', 'Justiciability', 'Separation of Powers', 'Judicial Review'],
+    difficulty: 'Advanced',
+    isEssential: false,
   },
   {
     term: 'Administrative Agency',
@@ -207,6 +251,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'The Environmental Protection Agency is an administrative agency charged with implementing and enforcing federal environmental statutes.',
     relatedTerms: ['Rulemaking', 'Administrative Law Judge', 'Delegation Doctrine', 'Chevron Deference'],
+    difficulty: 'Beginner',
+    isEssential: true,
   },
   {
     term: 'Rulemaking',
@@ -216,6 +262,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'The FDA must publish a proposed rule in the Federal Register and allow public comment before finalizing a regulation on drug labeling.',
     relatedTerms: ['Notice-and-Comment', 'Administrative Agency', 'Administrative Procedure Act', 'Chevron Deference'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Notice-and-Comment Rulemaking',
@@ -225,6 +273,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'Before issuing workplace safety standards, OSHA must publish the proposed standard, accept written comments from the public and industry, and respond to significant comments in the final rule.',
     relatedTerms: ['Rulemaking', 'Administrative Procedure Act', 'Final Rule', 'Arbitrary and Capricious'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Chevron Deference',
@@ -232,8 +282,10 @@ const terms: GlossaryTermSeed[] = [
       'A doctrine of administrative law, originating in Chevron U.S.A. v. Natural Resources Defense Council (1984), under which courts defer to a federal agency\'s reasonable interpretation of an ambiguous statute it administers. The Supreme Court overruled Chevron in Loper Bright Enterprises v. Raimondo (2024), returning interpretive primacy to courts.',
     category: 'Constitutional & Administrative',
     example:
-      'Under Chevron, courts asked first whether Congress had spoken clearly and, if not, whether the agency\'s interpretation was permissible—a framework now superseded by de novo review.',
+      'Under Chevron, courts asked first whether Congress had spoken clearly and, if not, whether the agency\'s interpretation was permissible — a framework now superseded by de novo review.',
     relatedTerms: ['Administrative Agency', 'Rulemaking', 'Arbitrary and Capricious', 'Major Questions Doctrine'],
+    difficulty: 'Advanced',
+    isEssential: false,
   },
   {
     term: 'Administrative Law Judge',
@@ -243,6 +295,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'Social Security disability claimants whose initial applications are denied may request a hearing before an Administrative Law Judge within the Social Security Administration.',
     relatedTerms: ['Administrative Agency', 'Exhaustion of Remedies', 'Due Process', 'Adjudication'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Exhaustion of Remedies',
@@ -252,6 +306,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A federal employee who believes they were wrongfully terminated must exhaust grievance procedures before filing suit in federal court.',
     relatedTerms: ['Administrative Agency', 'Ripeness', 'Administrative Law Judge', 'Finality Doctrine'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Arbitrary and Capricious',
@@ -259,8 +315,10 @@ const terms: GlossaryTermSeed[] = [
       'The standard of judicial review under Section 706 of the Administrative Procedure Act by which courts set aside agency action that is not rationally connected to the facts in the record, fails to consider relevant factors, or reflects a clear error of judgment.',
     category: 'Constitutional & Administrative',
     example:
-      'An agency rule that ignored significant scientific evidence in the rulemaking record may be vacated as arbitrary and capricious.',
+      'An agency that reverses a long-standing policy without explaining why the facts or law have changed may have its new rule struck down as arbitrary and capricious.',
     relatedTerms: ['Notice-and-Comment', 'Chevron Deference', 'Administrative Procedure Act', 'Hard Look Review'],
+    difficulty: 'Advanced',
+    isEssential: false,
   },
   {
     term: 'Preemption',
@@ -270,6 +328,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A state law imposing stricter aircraft noise standards was preempted because Congress intended to occupy the field of aviation safety regulation.',
     relatedTerms: ['Supremacy Clause', 'Federalism', 'Commerce Clause', 'Dormant Commerce Clause'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Non-Delegation Doctrine',
@@ -279,6 +339,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'If a statute authorized an agency to regulate air quality "as it sees fit" with no further guidance, it might violate the non-delegation doctrine.',
     relatedTerms: ['Separation of Powers', 'Administrative Agency', 'Major Questions Doctrine', 'Rulemaking'],
+    difficulty: 'Advanced',
+    isEssential: false,
   },
   {
     term: 'Major Questions Doctrine',
@@ -288,6 +350,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'In West Virginia v. EPA (2022), the Supreme Court held that the Clean Air Act did not clearly authorize the EPA to regulate carbon emissions through generation-shifting across the energy sector.',
     relatedTerms: ['Chevron Deference', 'Non-Delegation Doctrine', 'Administrative Agency', 'Rulemaking'],
+    difficulty: 'Advanced',
+    isEssential: false,
   },
   {
     term: 'Dormant Commerce Clause',
@@ -297,6 +361,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A state law requiring that all milk sold in the state be processed at in-state facilities discriminates against interstate commerce and is invalid under the dormant Commerce Clause.',
     relatedTerms: ['Commerce Clause', 'Federalism', 'Preemption', 'Market Participant Exception'],
+    difficulty: 'Advanced',
+    isEssential: false,
   },
 ];
 

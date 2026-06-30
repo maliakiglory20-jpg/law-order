@@ -10,8 +10,19 @@ export class GlossaryController {
 
   @Public()
   @Get()
-  @ApiOperation({ summary: 'Get glossary terms (search, category, and letter filters)' })
-  findAll(@Query() query: { search?: string; category?: string; letter?: string; page?: number; limit?: number }) {
+  @ApiOperation({ summary: 'Get glossary terms (search, category, letter, difficulty, essential filters)' })
+  findAll(
+    @Query()
+    query: {
+      search?: string;
+      category?: string;
+      letter?: string;
+      difficulty?: string;
+      essential?: string;
+      page?: number;
+      limit?: number;
+    },
+  ) {
     return this.glossaryService.findAll(query);
   }
 

@@ -9,6 +9,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A seller sends a signed letter offering to sell a warehouse for $500,000, with payment due within 30 days of acceptance.',
     relatedTerms: ['Acceptance', 'Mutual Assent', 'Consideration'],
+    difficulty: 'Beginner',
+    isEssential: true,
   },
   {
     term: 'Acceptance',
@@ -18,6 +20,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A buyer signs and returns the seller\'s purchase order without modification, constituting valid acceptance.',
     relatedTerms: ['Offer', 'Mutual Assent', 'Consideration', 'Counter-Offer'],
+    difficulty: 'Beginner',
+    isEssential: true,
   },
   {
     term: 'Consideration',
@@ -27,6 +31,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A tenant pays monthly rent (consideration) in exchange for the landlord\'s promise to provide use of the premises.',
     relatedTerms: ['Promissory Estoppel', 'Offer', 'Acceptance', 'Quantum Meruit'],
+    difficulty: 'Beginner',
+    isEssential: true,
   },
   {
     term: 'Mutual Assent',
@@ -36,6 +42,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'Both parties sign the same written agreement after negotiating and agreeing on all material terms.',
     relatedTerms: ['Offer', 'Acceptance', 'Consideration'],
+    difficulty: 'Beginner',
+    isEssential: true,
   },
   {
     term: 'Breach of Contract',
@@ -45,6 +53,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A software developer fails to deliver the completed application by the contractual deadline, constituting a breach.',
     relatedTerms: ['Material Breach', 'Anticipatory Repudiation', 'Damages', 'Specific Performance'],
+    difficulty: 'Beginner',
+    isEssential: true,
   },
   {
     term: 'Material Breach',
@@ -54,6 +64,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A contractor completes only 20% of a construction project before abandoning it, constituting a material breach.',
     relatedTerms: ['Breach of Contract', 'Anticipatory Repudiation', 'Damages', 'Rescission'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Anticipatory Repudiation',
@@ -63,6 +75,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A supplier emails the buyer two months before the delivery date, stating it will not ship the goods under any circumstances.',
     relatedTerms: ['Material Breach', 'Breach of Contract', 'Damages', 'Mitigation'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Specific Performance',
@@ -72,6 +86,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A court orders the seller of a one-of-a-kind painting to complete the sale rather than pay money damages.',
     relatedTerms: ['Breach of Contract', 'Equitable Remedy', 'Injunction', 'Damages'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Liquidated Damages',
@@ -81,6 +97,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A construction contract specifies $5,000 per day for every day beyond the completion deadline.',
     relatedTerms: ['Consequential Damages', 'Expectation Damages', 'Breach of Contract', 'Penalty Clause'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Consequential Damages',
@@ -90,6 +108,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A supplier\'s late delivery of raw materials causes a manufacturer to miss a major customer contract, and the manufacturer seeks the lost profits as consequential damages.',
     relatedTerms: ['Liquidated Damages', 'Expectation Damages', 'Mitigation', 'Breach of Contract'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Expectation Damages',
@@ -99,6 +119,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A buyer who contracted to buy goods for $10,000 that now cost $14,000 on the open market recovers $4,000 in expectation damages.',
     relatedTerms: ['Consequential Damages', 'Reliance Damages', 'Restitution', 'Breach of Contract'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Mitigation',
@@ -108,6 +130,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'An employee who is wrongfully terminated must make reasonable efforts to find comparable employment; failure to do so reduces any damages award.',
     relatedTerms: ['Expectation Damages', 'Consequential Damages', 'Breach of Contract', 'Reliance Damages'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Rescission',
@@ -117,6 +141,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'After discovering the seller misrepresented the condition of equipment, the buyer rescinds the contract and demands a refund.',
     relatedTerms: ['Reformation', 'Voidable', 'Fraud', 'Restitution'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Reformation',
@@ -126,6 +152,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A court reforms a lease that erroneously states $1,000/month when both parties agreed to $1,500/month.',
     relatedTerms: ['Rescission', 'Mutual Mistake', 'Equitable Remedy', 'Parol Evidence'],
+    difficulty: 'Advanced',
+    isEssential: false,
   },
   {
     term: 'Void Contract',
@@ -135,6 +163,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A contract to commit a crime is void and cannot be enforced by either party.',
     relatedTerms: ['Voidable', 'Illegal Contract', 'Capacity', 'Consideration'],
+    difficulty: 'Beginner',
+    isEssential: false,
   },
   {
     term: 'Voidable Contract',
@@ -144,6 +174,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A contract signed by a 16-year-old is voidable at the minor\'s election but enforceable against the other party until the minor disaffirms.',
     relatedTerms: ['Void Contract', 'Rescission', 'Capacity', 'Fraud'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Unconscionable Contract',
@@ -153,6 +185,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A consumer credit agreement with a 400% interest rate buried in fine print with no opportunity to negotiate may be deemed unconscionable.',
     relatedTerms: ['Void Contract', 'Adhesion Contract', 'Good Faith', 'UCC'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Statute of Frauds',
@@ -162,6 +196,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'An oral agreement to sell real property is unenforceable under the statute of frauds without a signed writing.',
     relatedTerms: ['Parol Evidence', 'Writing Requirement', 'UCC', 'Promissory Estoppel'],
+    difficulty: 'Intermediate',
+    isEssential: true,
   },
   {
     term: 'Parol Evidence Rule',
@@ -171,6 +207,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A party cannot introduce evidence of an oral side-agreement made before contract signing if the written contract is fully integrated and directly addresses the topic.',
     relatedTerms: ['Statute of Frauds', 'Integration Clause', 'Reformation', 'Extrinsic Evidence'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Condition Precedent',
@@ -180,6 +218,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A home purchase contract conditioned on the buyer obtaining financing: if financing is denied, the buyer has no obligation to close and is not in breach.',
     relatedTerms: ['Condition Subsequent', 'Performance', 'Breach of Contract', 'Excuse of Condition'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Condition Subsequent',
@@ -189,6 +229,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'An insurance policy terminates coverage if the insured starts using the premises for commercial purposes, which is a condition subsequent.',
     relatedTerms: ['Condition Precedent', 'Discharge', 'Performance', 'Breach of Contract'],
+    difficulty: 'Advanced',
+    isEssential: false,
   },
   {
     term: 'Warranty',
@@ -198,6 +240,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A manufacturer\'s written guarantee that a product is free from defects for one year is an express warranty.',
     relatedTerms: ['UCC', 'Implied Warranty', 'Breach of Contract', 'Indemnification'],
+    difficulty: 'Beginner',
+    isEssential: true,
   },
   {
     term: 'Indemnification',
@@ -207,6 +251,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A service agreement requires the contractor to indemnify the client against any claims arising from the contractor\'s negligence.',
     relatedTerms: ['Hold Harmless', 'Warranty', 'Liability', 'Insurance'],
+    difficulty: 'Intermediate',
+    isEssential: true,
   },
   {
     term: 'Force Majeure',
@@ -216,6 +262,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A supplier invokes the force majeure clause after a hurricane destroys its facilities, excusing its failure to deliver goods on time.',
     relatedTerms: ['Impossibility', 'Frustration of Purpose', 'Impracticability', 'Excuse'],
+    difficulty: 'Intermediate',
+    isEssential: true,
   },
   {
     term: 'Novation',
@@ -225,6 +273,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'When a company sells its business, the buyer assumes all contracts and the seller is released through novation agreements with each counterparty.',
     relatedTerms: ['Assignment', 'Delegation', 'Modification', 'Discharge'],
+    difficulty: 'Advanced',
+    isEssential: false,
   },
   {
     term: 'Assignment',
@@ -234,6 +284,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A landlord assigns the right to collect rent to a property management company without assigning the obligation to maintain the property.',
     relatedTerms: ['Delegation', 'Novation', 'Third-Party Beneficiary', 'Anti-Assignment Clause'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Delegation',
@@ -243,6 +295,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A painting contractor delegates the work to a subcontractor but remains liable to the homeowner if the subcontractor performs defectively.',
     relatedTerms: ['Assignment', 'Novation', 'Subcontract', 'Breach of Contract'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Third-Party Beneficiary',
@@ -252,6 +306,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A life insurance contract names a child as beneficiary; the child is an intended third-party beneficiary who can sue the insurer if benefits are wrongly withheld.',
     relatedTerms: ['Assignment', 'Privity of Contract', 'Donee Beneficiary', 'Creditor Beneficiary'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Promissory Estoppel',
@@ -261,6 +317,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'An employer promises an employee a job, the employee quits their current job in reliance, and the employer withdraws the offer; the employee may recover under promissory estoppel.',
     relatedTerms: ['Consideration', 'Reliance Damages', 'Equitable Estoppel', 'Statute of Frauds'],
+    difficulty: 'Advanced',
+    isEssential: false,
   },
   {
     term: 'Quantum Meruit',
@@ -270,6 +328,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A lawyer performs services under a contract later declared void; the lawyer may recover the reasonable value of services in quantum meruit.',
     relatedTerms: ['Restitution', 'Unjust Enrichment', 'Implied Contract', 'Consideration'],
+    difficulty: 'Advanced',
+    isEssential: false,
   },
   {
     term: 'UCC (Uniform Commercial Code)',
@@ -277,8 +337,10 @@ const terms: GlossaryTermSeed[] = [
       'A comprehensive set of laws governing commercial transactions in the United States, adopted in whole or in part by all 50 states. Article 2 covers the sale of goods and modifies many common-law contract rules, including acceptance, warranties, and remedies.',
     category: 'Contracts & Commercial',
     example:
-      'A dispute over a software hardware sale is governed by UCC Article 2, which allows acceptance with additional terms under the battle-of-the-forms rule.',
+      'A dispute over a hardware sale is governed by UCC Article 2, which allows acceptance with additional terms under the battle-of-the-forms rule.',
     relatedTerms: ['Warranty', 'Good Faith', 'Sale of Goods', 'Statute of Frauds'],
+    difficulty: 'Intermediate',
+    isEssential: true,
   },
   {
     term: 'Good Faith',
@@ -288,6 +350,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'An insurance company that delays payment without a reasonable basis may breach the implied covenant of good faith and fair dealing.',
     relatedTerms: ['UCC', 'Unconscionable Contract', 'Covenant', 'Bad Faith'],
+    difficulty: 'Beginner',
+    isEssential: true,
   },
   {
     term: 'Covenant',
@@ -297,6 +361,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A lease contains a covenant of quiet enjoyment, promising the tenant undisturbed possession of the premises.',
     relatedTerms: ['Non-Compete Agreement', 'Good Faith', 'Condition Precedent', 'Breach of Contract'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Non-Compete Agreement',
@@ -306,6 +372,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A sales executive signs an agreement prohibiting them from working for a direct competitor within a 50-mile radius for two years after leaving the company.',
     relatedTerms: ['Covenant', 'Non-Disclosure Agreement', 'Restraint of Trade', 'Reasonableness'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Reliance Damages',
@@ -315,6 +383,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A party that spent $20,000 preparing for performance before the other party breached may recover those $20,000 as reliance damages.',
     relatedTerms: ['Expectation Damages', 'Restitution', 'Promissory Estoppel', 'Mitigation'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Restitution',
@@ -324,6 +394,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'After a contract is rescinded for fraud, the court orders each party to return what they received from the other under restitution.',
     relatedTerms: ['Quantum Meruit', 'Unjust Enrichment', 'Rescission', 'Reliance Damages'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Integration Clause',
@@ -333,6 +405,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A contract\'s final paragraph states: "This agreement constitutes the entire agreement and supersedes all prior understandings."',
     relatedTerms: ['Parol Evidence Rule', 'Merger Clause', 'Modification', 'Interpretation'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Counter-Offer',
@@ -342,6 +416,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A buyer responds to a $50,000 offer with a $42,000 offer, creating a counter-offer that kills the original offer.',
     relatedTerms: ['Offer', 'Acceptance', 'Mutual Assent', 'Battle of the Forms'],
+    difficulty: 'Beginner',
+    isEssential: false,
   },
   {
     term: 'Impossibility of Performance',
@@ -351,6 +427,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A venue burns down before a scheduled concert; the promoter\'s obligation to perform is excused by impossibility.',
     relatedTerms: ['Force Majeure', 'Frustration of Purpose', 'Commercial Impracticability', 'Discharge'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Frustration of Purpose',
@@ -360,6 +438,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A hotel room was booked to watch a coronation parade route; the coronation was cancelled, frustrating the purpose of the contract.',
     relatedTerms: ['Impossibility of Performance', 'Force Majeure', 'Commercial Impracticability', 'Discharge'],
+    difficulty: 'Advanced',
+    isEssential: false,
   },
   {
     term: 'Adhesion Contract',
@@ -369,6 +449,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'Online terms-of-service agreements presented to consumers with only "I Agree" as an option are typical adhesion contracts.',
     relatedTerms: ['Unconscionable Contract', 'Good Faith', 'Offer', 'Acceptance'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Battle of the Forms',
@@ -378,6 +460,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A buyer\'s purchase order and a seller\'s order confirmation each contain different warranty and dispute-resolution terms; the UCC determines which terms govern.',
     relatedTerms: ['UCC', 'Counter-Offer', 'Acceptance', 'Integration Clause'],
+    difficulty: 'Advanced',
+    isEssential: false,
   },
   {
     term: 'Commercial Impracticability',
@@ -387,6 +471,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A war causes a tenfold increase in the cost of raw materials, making contract performance commercially impracticable for the supplier.',
     relatedTerms: ['Impossibility of Performance', 'Force Majeure', 'Frustration of Purpose', 'UCC'],
+    difficulty: 'Advanced',
+    isEssential: false,
   },
   {
     term: 'Implied Contract',
@@ -396,6 +482,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A patient receives emergency medical treatment and is obligated to pay a reasonable fee under an implied contract.',
     relatedTerms: ['Quantum Meruit', 'Unjust Enrichment', 'Quasi-Contract', 'Consideration'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Penalty Clause',
@@ -405,6 +493,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A clause requiring a $1 million payment for a minor delay in delivery of a $10,000 order would be struck as a penalty clause.',
     relatedTerms: ['Liquidated Damages', 'Breach of Contract', 'Unconscionable Contract', 'Enforceability'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Modification',
@@ -414,6 +504,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'Parties agree in writing to extend the delivery deadline by 30 days, constituting a valid modification of the original contract.',
     relatedTerms: ['Novation', 'Consideration', 'Integration Clause', 'UCC'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Unjust Enrichment',
@@ -423,6 +515,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A contractor inadvertently improves the wrong house; the homeowner is unjustly enriched and must pay the reasonable value of the improvement.',
     relatedTerms: ['Restitution', 'Quantum Meruit', 'Quasi-Contract', 'Implied Contract'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
 ];
 

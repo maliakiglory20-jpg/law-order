@@ -155,6 +155,8 @@ async function main() {
     category: string;
     example: string | null;
     relatedTerms: string[];
+    difficulty: string;
+    isEssential: boolean;
   }>;
   for (const t of glossaryTerms) {
     const key = t.term.trim().toLowerCase();
@@ -172,6 +174,8 @@ async function main() {
       category: t.category,
       example: t.example ?? null,
       relatedTerms: t.relatedTerms ?? [],
+      difficulty: t.difficulty ?? 'Intermediate',
+      isEssential: t.isEssential ?? false,
     });
   }
   await prisma.glossaryTerm.createMany({ data: glossaryData });

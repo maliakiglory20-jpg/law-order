@@ -230,6 +230,8 @@ export interface GlossaryTerm {
   category: string;
   example?: string | null;
   relatedTerms: string[];
+  difficulty: 'Beginner' | 'Intermediate' | 'Advanced';
+  isEssential: boolean;
   createdAt: string;
   updatedAt: string;
 }

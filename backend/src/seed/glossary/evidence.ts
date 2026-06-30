@@ -9,6 +9,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A witness testifying that they heard someone say "the defendant did it" to prove the defendant committed the act is hearsay.',
     relatedTerms: ['Hearsay Exception', 'Admissibility', 'Out-of-Court Statement'],
+    difficulty: 'Beginner',
+    isEssential: true,
   },
   {
     term: 'Hearsay Exception',
@@ -18,6 +20,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A statement made by a victim immediately after a car accident describing what happened qualifies as an excited utterance exception.',
     relatedTerms: ['Hearsay', 'Excited Utterance', 'Business Records Exception'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Excited Utterance',
@@ -27,6 +31,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       '"He just stabbed me!" shouted immediately after a stabbing qualifies as an excited utterance.',
     relatedTerms: ['Hearsay Exception', 'Present Sense Impression', 'Spontaneous Declaration'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Relevance',
@@ -36,6 +42,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A prior threatening letter from the defendant to the victim is relevant in a harassment case.',
     relatedTerms: ['Materiality', 'Probative Value', 'Admissibility'],
+    difficulty: 'Beginner',
+    isEssential: true,
   },
   {
     term: 'Materiality',
@@ -45,6 +53,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'In a breach of contract case, evidence of the contract terms is material; evidence of the defendant\'s unrelated traffic ticket is not.',
     relatedTerms: ['Relevance', 'Probative Value', 'Admissibility'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Probative Value',
@@ -54,6 +64,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'DNA evidence matching the defendant has high probative value in an assault case.',
     relatedTerms: ['Prejudicial Effect', 'Relevance', 'Rule 403 Balancing'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Prejudicial Effect',
@@ -63,6 +75,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'Graphic crime-scene photographs may be excluded if their inflammatory nature far outweighs their evidentiary value.',
     relatedTerms: ['Probative Value', 'Rule 403 Balancing', 'Admissibility'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Rule 403 Balancing',
@@ -72,6 +86,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A judge balances the value of prior-crime evidence against the risk of the jury convicting based on character rather than the charged conduct.',
     relatedTerms: ['Probative Value', 'Prejudicial Effect', 'Relevance'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Authentication',
@@ -81,6 +97,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A witness who sent a text message can authenticate it by testifying that the screenshot accurately depicts the conversation.',
     relatedTerms: ['Chain of Custody', 'Foundation', 'Best Evidence Rule'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Chain of Custody',
@@ -90,6 +108,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'Police must log every person who handled a blood sample from a crime scene to establish an unbroken chain of custody.',
     relatedTerms: ['Authentication', 'Foundation', 'Spoliation'],
+    difficulty: 'Beginner',
+    isEssential: true,
   },
   {
     term: 'Best Evidence Rule',
@@ -99,15 +119,19 @@ const terms: GlossaryTermSeed[] = [
     example:
       'To prove what a contract says, the party must produce the original contract rather than paraphrasing it in testimony.',
     relatedTerms: ['Authentication', 'Secondary Evidence', 'Parol Evidence Rule'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Parol Evidence Rule',
     definition:
-      'A substantive contract doctrine that bars introduction of extrinsic evidence—oral or written negotiations or agreements made prior to or contemporaneous with a final integrated written contract—to vary, contradict, or add to its terms.',
+      'A contract law doctrine that bars the use of prior oral or written negotiations to contradict or change the terms of a final written contract. Once a contract is signed as the complete agreement, outside promises generally cannot override it.',
     category: 'Evidence',
     example:
       'If a written lease says rent is $1,500/month, the tenant cannot introduce evidence of an oral side-deal promising a lower rate.',
     relatedTerms: ['Best Evidence Rule', 'Integration Clause', 'Contract Interpretation'],
+    difficulty: 'Advanced',
+    isEssential: false,
   },
   {
     term: 'Privilege',
@@ -117,6 +141,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A client may assert attorney-client privilege to prevent their lawyer from testifying about legal advice given during representation.',
     relatedTerms: ['Attorney-Client Privilege', 'Work Product Doctrine', 'Spousal Privilege'],
+    difficulty: 'Beginner',
+    isEssential: true,
   },
   {
     term: 'Attorney-Client Privilege',
@@ -126,6 +152,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'Emails between a corporate officer and in-house counsel seeking legal guidance on a merger are protected by attorney-client privilege.',
     relatedTerms: ['Privilege', 'Work Product Doctrine', 'Waiver of Privilege'],
+    difficulty: 'Beginner',
+    isEssential: true,
   },
   {
     term: 'Work Product Doctrine',
@@ -135,6 +163,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'An attorney\'s notes outlining litigation strategy and witness interview summaries are protected work product.',
     relatedTerms: ['Attorney-Client Privilege', 'Privilege', 'Discovery'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Expert Witness',
@@ -144,6 +174,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A forensic accountant called to explain complex financial fraud schemes is an expert witness.',
     relatedTerms: ['Daubert Standard', 'Frye Standard', 'Lay Witness'],
+    difficulty: 'Beginner',
+    isEssential: false,
   },
   {
     term: 'Lay Witness',
@@ -153,6 +185,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A bystander who saw a car run a red light can testify to the color of the light as a lay witness.',
     relatedTerms: ['Expert Witness', 'Fact Witness', 'Opinion Testimony'],
+    difficulty: 'Beginner',
+    isEssential: false,
   },
   {
     term: 'Daubert Standard',
@@ -162,6 +196,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A court applies the Daubert standard to decide whether a fire-investigation expert\'s methodology reliably determines the cause of a building fire.',
     relatedTerms: ['Frye Standard', 'Expert Witness', 'Scientific Evidence'],
+    difficulty: 'Advanced',
+    isEssential: false,
   },
   {
     term: 'Frye Standard',
@@ -171,6 +207,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'Under Frye, polygraph evidence has historically been excluded because lie-detector results are not generally accepted as reliable.',
     relatedTerms: ['Daubert Standard', 'Expert Witness', 'Scientific Evidence'],
+    difficulty: 'Advanced',
+    isEssential: false,
   },
   {
     term: 'Direct Examination',
@@ -180,6 +218,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'The plaintiff\'s attorney asks their client "What happened on the night of the accident?" during direct examination.',
     relatedTerms: ['Cross-Examination', 'Leading Question', 'Redirect Examination'],
+    difficulty: 'Beginner',
+    isEssential: false,
   },
   {
     term: 'Cross-Examination',
@@ -189,6 +229,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'Defense counsel asks the plaintiff\'s witness "Isn\'t it true that you were not wearing your glasses that night?" on cross-examination.',
     relatedTerms: ['Direct Examination', 'Impeachment', 'Leading Question'],
+    difficulty: 'Beginner',
+    isEssential: false,
   },
   {
     term: 'Impeachment',
@@ -198,6 +240,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'Counsel impeaches a witness by presenting a signed statement the witness made to police that contradicts their trial testimony.',
     relatedTerms: ['Cross-Examination', 'Prior Inconsistent Statement', 'Credibility'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Leading Question',
@@ -207,6 +251,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       '"You were speeding, weren\'t you?" is a leading question because it suggests the answer "yes."',
     relatedTerms: ['Direct Examination', 'Cross-Examination', 'Hostile Witness'],
+    difficulty: 'Beginner',
+    isEssential: false,
   },
   {
     term: 'Objection',
@@ -216,6 +262,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'Counsel objects "Hearsay, Your Honor" when opposing counsel asks a witness to recount what an absent third party told them.',
     relatedTerms: ['Foundation', 'Admissibility', 'Waiver'],
+    difficulty: 'Beginner',
+    isEssential: true,
   },
   {
     term: 'Foundation',
@@ -225,6 +273,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'Before admitting a business record, counsel must establish that it was made in the ordinary course of business and at or near the time of the event.',
     relatedTerms: ['Authentication', 'Objection', 'Business Records Exception'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Stipulation',
@@ -234,6 +284,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'The parties stipulate that the defendant was present at the scene on the date in question, eliminating the need for testimony on that point.',
     relatedTerms: ['Judicial Notice', 'Admissibility', 'Pretrial Conference'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Judicial Notice',
@@ -243,6 +295,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A court may take judicial notice that July 4 is a federal holiday without requiring evidence to prove it.',
     relatedTerms: ['Stipulation', 'Admissibility', 'Fact-Finding'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Burden of Proof',
@@ -252,6 +306,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'In a civil lawsuit, the plaintiff bears the burden of proof to establish liability by a preponderance of the evidence.',
     relatedTerms: ['Preponderance of the Evidence', 'Beyond a Reasonable Doubt', 'Clear and Convincing Evidence'],
+    difficulty: 'Beginner',
+    isEssential: true,
   },
   {
     term: 'Preponderance of the Evidence',
@@ -261,6 +317,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A plaintiff in a negligence suit must show by preponderance of the evidence that the defendant\'s carelessness caused their injuries.',
     relatedTerms: ['Burden of Proof', 'Clear and Convincing Evidence', 'Beyond a Reasonable Doubt'],
+    difficulty: 'Beginner',
+    isEssential: false,
   },
   {
     term: 'Clear and Convincing Evidence',
@@ -270,6 +328,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'To obtain punitive damages in many jurisdictions, a plaintiff must prove malice or oppression by clear and convincing evidence.',
     relatedTerms: ['Burden of Proof', 'Preponderance of the Evidence', 'Beyond a Reasonable Doubt'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Beyond a Reasonable Doubt',
@@ -279,6 +339,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A jury that has lingering doubts grounded in reason about whether the defendant committed the crime must acquit under the beyond a reasonable doubt standard.',
     relatedTerms: ['Burden of Proof', 'Preponderance of the Evidence', 'Presumption of Innocence'],
+    difficulty: 'Beginner',
+    isEssential: true,
   },
   {
     term: 'Circumstantial Evidence',
@@ -288,6 +350,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'Muddy footprints leading from a crime scene to the defendant\'s car are circumstantial evidence linking the defendant to the location.',
     relatedTerms: ['Direct Evidence', 'Inference', 'Relevance'],
+    difficulty: 'Beginner',
+    isEssential: false,
   },
   {
     term: 'Direct Evidence',
@@ -297,6 +361,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A witness who saw the defendant fire the gun provides direct evidence of that act.',
     relatedTerms: ['Circumstantial Evidence', 'Eyewitness Testimony', 'Credibility'],
+    difficulty: 'Beginner',
+    isEssential: false,
   },
   {
     term: 'Exhibit',
@@ -306,6 +372,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'The prosecution introduces the murder weapon as Exhibit 1 after a detective testifies to its discovery and chain of custody.',
     relatedTerms: ['Authentication', 'Chain of Custody', 'Demonstrative Evidence'],
+    difficulty: 'Beginner',
+    isEssential: true,
   },
   {
     term: 'Demonstrative Evidence',
@@ -315,6 +383,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'An accident-reconstruction expert uses a computer animation showing vehicle trajectories as demonstrative evidence.',
     relatedTerms: ['Exhibit', 'Expert Witness', 'Real Evidence'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Real Evidence',
@@ -324,6 +394,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A bloody glove recovered at a crime scene is real evidence; a diagram of the crime scene is demonstrative evidence.',
     relatedTerms: ['Demonstrative Evidence', 'Exhibit', 'Chain of Custody'],
+    difficulty: 'Beginner',
+    isEssential: false,
   },
   {
     term: 'Spoliation',
@@ -333,6 +405,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A company that shreds emails after receiving a litigation hold notice commits spoliation and may face an adverse inference instruction.',
     relatedTerms: ['Chain of Custody', 'Adverse Inference', 'Litigation Hold'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Adverse Inference',
@@ -342,6 +416,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'Because the defendant deleted surveillance footage, the judge instructs the jury that it may infer the footage showed the defendant at the crime scene.',
     relatedTerms: ['Spoliation', 'Jury Instruction', 'Sanctions'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Prior Inconsistent Statement',
@@ -351,6 +427,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'Counsel confronts a witness with a police report in which the witness described the car as blue, contrary to the witness\'s trial testimony that it was red.',
     relatedTerms: ['Impeachment', 'Cross-Examination', 'Credibility'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Business Records Exception',
@@ -360,6 +438,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'Hospital billing records are admitted under the business records exception to show the cost of medical treatment.',
     relatedTerms: ['Hearsay Exception', 'Foundation', 'Authentication'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Dying Declaration',
@@ -369,6 +449,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A stabbing victim\'s statement to paramedics identifying the attacker, made while the victim believed they would not survive, is a dying declaration.',
     relatedTerms: ['Hearsay Exception', 'Excited Utterance', 'Confrontation Clause'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Confrontation Clause',
@@ -378,6 +460,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A recorded police interrogation statement offered against the defendant may violate the Confrontation Clause if the declarant does not testify at trial.',
     relatedTerms: ['Hearsay', 'Cross-Examination', 'Dying Declaration'],
+    difficulty: 'Advanced',
+    isEssential: false,
   },
   {
     term: 'Limiting Instruction',
@@ -387,6 +471,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'When a prior conviction is admitted to impeach a witness, the judge instructs the jury to use it only to assess credibility, not as proof that the defendant is a bad person.',
     relatedTerms: ['Jury Instruction', 'Prejudicial Effect', 'Rule 403 Balancing'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Character Evidence',
@@ -396,6 +482,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A prosecutor generally cannot introduce evidence that the defendant has a violent character to prove he committed assault.',
     relatedTerms: ['Propensity Evidence', 'Prior Bad Acts', 'Prejudicial Effect'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Propensity Evidence',
@@ -405,6 +493,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'Offering evidence that the defendant previously assaulted someone to prove he assaulted the current victim is propensity evidence generally barred by FRE 404(b).',
     relatedTerms: ['Character Evidence', 'Prior Bad Acts', 'Rule 403 Balancing'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Prior Bad Acts',
@@ -414,6 +504,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'Evidence of a defendant\'s prior insurance fraud scheme is admissible to show a common plan or scheme in a new fraud prosecution.',
     relatedTerms: ['Propensity Evidence', 'Character Evidence', 'Limiting Instruction'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Opinion Testimony',
@@ -423,6 +515,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A lay witness may testify "He seemed drunk" based on observed stumbling and slurred speech; an expert toxicologist may opine on a specific blood-alcohol level.',
     relatedTerms: ['Expert Witness', 'Lay Witness', 'Foundation'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Presumption',
@@ -432,6 +526,8 @@ const terms: GlossaryTermSeed[] = [
     example:
       'A person who has been missing for seven years is presumed dead, shifting the burden to those contesting the death to produce rebutting evidence.',
     relatedTerms: ['Burden of Proof', 'Inference', 'Judicial Notice'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
 ];
 

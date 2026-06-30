@@ -5,14 +5,24 @@ import { PrismaService } from '../../prisma.service';
 export class GlossaryService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async findAll(params: { search?: string; category?: string; letter?: string; page?: number; limit?: number }) {
-    const { search, category, letter } = params;
+  async findAll(params: {
+    search?: string;
+    category?: string;
+    letter?: string;
+    difficulty?: string;
+    essential?: string | boolean;
+    page?: number;
+    limit?: number;
+  }) {
+    const { search, category, letter, difficulty, essential } = params;
     const page = Number(params.page) || 1;
     const limit = Number(params.limit) || 50;
     const skip = (page - 1) * limit;
 
     const where: any = {};
     if (category && category !== 'All') where.category = category;
+    if (difficulty && difficulty !== 'All') where.difficulty = difficulty;
+    if (essential === true || essential === 'true') where.isEssential = true;
     if (letter) where.term = { startsWith: letter, mode: 'insensitive' };
     if (search) {
       where.OR = [

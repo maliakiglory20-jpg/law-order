@@ -8,6 +8,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Corporate, Business & IP',
     example: 'Apple Inc. is a Delaware corporation whose shareholders are not personally liable for its debts.',
     relatedTerms: ['Shareholder', 'Limited Liability Company', 'Piercing the Corporate Veil', 'Board of Directors'],
+    difficulty: 'Beginner',
+    isEssential: true,
   },
   {
     term: 'Limited Liability Company (LLC)',
@@ -16,6 +18,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Corporate, Business & IP',
     example: 'A small law firm may organize as an LLC so that individual members are not liable for another member\'s malpractice.',
     relatedTerms: ['Corporation', 'Partnership', 'Piercing the Corporate Veil', 'Operating Agreement'],
+    difficulty: 'Beginner',
+    isEssential: true,
   },
   {
     term: 'Partnership',
@@ -24,6 +28,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Corporate, Business & IP',
     example: 'Two attorneys who open a joint practice without filing any formation documents are general partners by default under most state laws.',
     relatedTerms: ['Limited Liability Company', 'Corporation', 'Fiduciary Duty', 'Operating Agreement'],
+    difficulty: 'Beginner',
+    isEssential: true,
   },
   {
     term: 'Fiduciary Duty',
@@ -32,6 +38,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Corporate, Business & IP',
     example: 'A corporate CEO who diverts a business opportunity to herself for personal profit breaches her fiduciary duty to the corporation.',
     relatedTerms: ['Duty of Care', 'Duty of Loyalty', 'Business Judgment Rule', 'Derivative Action'],
+    difficulty: 'Intermediate',
+    isEssential: true,
   },
   {
     term: 'Duty of Care',
@@ -40,6 +48,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Corporate, Business & IP',
     example: 'A board that approves a merger without reviewing any financial analyses may breach the duty of care.',
     relatedTerms: ['Fiduciary Duty', 'Duty of Loyalty', 'Business Judgment Rule', 'Board of Directors'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Duty of Loyalty',
@@ -48,6 +58,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Corporate, Business & IP',
     example: 'A director who votes to approve a contract between the corporation and a company he secretly owns breaches the duty of loyalty.',
     relatedTerms: ['Fiduciary Duty', 'Duty of Care', 'Business Judgment Rule', 'Derivative Action'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Business Judgment Rule',
@@ -56,6 +68,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Corporate, Business & IP',
     example: 'A board decision to enter a new market that later fails will typically be protected by the business judgment rule if the board was adequately informed.',
     relatedTerms: ['Duty of Care', 'Duty of Loyalty', 'Fiduciary Duty', 'Board of Directors'],
+    difficulty: 'Advanced',
+    isEssential: false,
   },
   {
     term: 'Piercing the Corporate Veil',
@@ -64,6 +78,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Corporate, Business & IP',
     example: 'A court pierced the veil of a single-member LLC whose owner paid personal expenses from the company account and never held formal meetings.',
     relatedTerms: ['Corporation', 'Limited Liability Company', 'Shareholder', 'Alter Ego'],
+    difficulty: 'Advanced',
+    isEssential: false,
   },
   {
     term: 'Shareholder',
@@ -72,6 +88,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Corporate, Business & IP',
     example: 'A person who holds 100 shares of Tesla stock is a shareholder entitled to vote at annual meetings.',
     relatedTerms: ['Corporation', 'Board of Directors', 'Derivative Action', 'Merger'],
+    difficulty: 'Beginner',
+    isEssential: true,
   },
   {
     term: 'Board of Directors',
@@ -80,6 +98,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Corporate, Business & IP',
     example: 'The board of directors approved the issuance of additional shares to fund the acquisition.',
     relatedTerms: ['Fiduciary Duty', 'Duty of Care', 'Duty of Loyalty', 'Business Judgment Rule'],
+    difficulty: 'Beginner',
+    isEssential: false,
   },
   {
     term: 'Derivative Action',
@@ -88,6 +108,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Corporate, Business & IP',
     example: 'Shareholders sued derivatively after the board refused to pursue claims against a CEO who had embezzled company funds.',
     relatedTerms: ['Shareholder', 'Fiduciary Duty', 'Duty of Loyalty', 'Corporation'],
+    difficulty: 'Advanced',
+    isEssential: false,
   },
   {
     term: 'Merger',
@@ -96,6 +118,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Corporate, Business & IP',
     example: 'Disney\'s acquisition of 21st Century Fox was structured as a merger in which Fox shareholders received Disney stock.',
     relatedTerms: ['Acquisition', 'Due Diligence', 'Shareholder', 'Antitrust'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Acquisition',
@@ -104,6 +128,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Corporate, Business & IP',
     example: 'Google\'s acquisition of YouTube in 2006 left YouTube operating as a subsidiary rather than merging it into Google.',
     relatedTerms: ['Merger', 'Due Diligence', 'Securities', 'Antitrust'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Due Diligence',
@@ -112,6 +138,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Corporate, Business & IP',
     example: 'During due diligence, the buyer discovered undisclosed environmental liabilities that led to a reduction in the purchase price.',
     relatedTerms: ['Merger', 'Acquisition', 'Securities', 'Representations and Warranties'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Securities',
@@ -120,6 +148,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Corporate, Business & IP',
     example: 'A startup\'s issuance of preferred stock in a Series A round constitutes the offer and sale of securities subject to SEC registration or exemption requirements.',
     relatedTerms: ['Insider Trading', 'Rule 10b-5', 'Securities Fraud', 'SEC'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Insider Trading',
@@ -128,6 +158,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Corporate, Business & IP',
     example: 'A corporate executive who sells her company\'s stock after learning of an unannounced earnings miss commits insider trading.',
     relatedTerms: ['Securities', 'Rule 10b-5', 'Securities Fraud', 'SEC'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Rule 10b-5',
@@ -136,6 +168,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Corporate, Business & IP',
     example: 'A company that issues a press release with false revenue figures may face a class-action lawsuit under Rule 10b-5.',
     relatedTerms: ['Insider Trading', 'Securities', 'Securities Fraud', 'SEC'],
+    difficulty: 'Advanced',
+    isEssential: false,
   },
   {
     term: 'Antitrust',
@@ -144,6 +178,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Corporate, Business & IP',
     example: 'The Department of Justice filed an antitrust lawsuit challenging the proposed merger of two major airlines, arguing it would reduce competition on hundreds of routes.',
     relatedTerms: ['Monopoly', 'Merger', 'Acquisition', 'Sherman Act'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Monopoly',
@@ -152,6 +188,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Corporate, Business & IP',
     example: 'The government argued that the technology company had used exclusive dealing contracts to unlawfully maintain its monopoly in the search engine market.',
     relatedTerms: ['Antitrust', 'Sherman Act', 'Market Power', 'Predatory Pricing'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Bankruptcy',
@@ -160,6 +198,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Corporate, Business & IP',
     example: 'The retailer filed for bankruptcy after years of declining sales left it unable to service its debt obligations.',
     relatedTerms: ['Chapter 7', 'Chapter 11', 'Automatic Stay', 'Creditor'],
+    difficulty: 'Beginner',
+    isEssential: true,
   },
   {
     term: 'Chapter 7',
@@ -168,6 +208,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Corporate, Business & IP',
     example: 'A small business with no viable future filed Chapter 7 to wind down operations and discharge unsecured debts.',
     relatedTerms: ['Bankruptcy', 'Chapter 11', 'Automatic Stay', 'Discharge'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Chapter 11',
@@ -176,6 +218,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Corporate, Business & IP',
     example: 'The airline filed Chapter 11 to restructure its union contracts and debt load while continuing to fly passengers.',
     relatedTerms: ['Bankruptcy', 'Chapter 7', 'Automatic Stay', 'Reorganization Plan'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Automatic Stay',
@@ -184,6 +228,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Corporate, Business & IP',
     example: 'The moment the company filed its Chapter 11 petition, all pending lawsuits against it were paused by the automatic stay.',
     relatedTerms: ['Bankruptcy', 'Chapter 7', 'Chapter 11', 'Creditor'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Patent',
@@ -192,6 +238,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Corporate, Business & IP',
     example: 'Pfizer obtained a patent on its COVID-19 vaccine formulation, giving it the exclusive right to manufacture the vaccine for 20 years.',
     relatedTerms: ['Prior Art', 'Patent Infringement', 'Trade Secret', 'Intellectual Property'],
+    difficulty: 'Beginner',
+    isEssential: true,
   },
   {
     term: 'Trademark',
@@ -200,6 +248,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Corporate, Business & IP',
     example: 'Nike\'s "swoosh" logo is a registered trademark that the company can enforce against competitors who use a confusingly similar design.',
     relatedTerms: ['Trade Dress', 'Infringement', 'Copyright', 'Licensing'],
+    difficulty: 'Beginner',
+    isEssential: true,
   },
   {
     term: 'Copyright',
@@ -208,6 +258,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Corporate, Business & IP',
     example: 'An author\'s novel is protected by copyright from the moment it is written, giving her the exclusive right to publish or license it.',
     relatedTerms: ['Fair Use', 'DMCA', 'Licensing', 'Infringement'],
+    difficulty: 'Beginner',
+    isEssential: true,
   },
   {
     term: 'Trade Secret',
@@ -216,6 +268,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Corporate, Business & IP',
     example: 'The Coca-Cola formula is a classic trade secret, protected indefinitely so long as the company maintains its confidentiality.',
     relatedTerms: ['Patent', 'Non-Disclosure Agreement', 'Misappropriation', 'Infringement'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Infringement',
@@ -224,6 +278,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Corporate, Business & IP',
     example: 'A competitor that copied the patented design of a consumer product without a license committed patent infringement.',
     relatedTerms: ['Patent', 'Trademark', 'Copyright', 'Fair Use'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Fair Use',
@@ -232,6 +288,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Corporate, Business & IP',
     example: 'A film critic who quotes several lines from a novel in her review may rely on fair use as a defense to copyright infringement.',
     relatedTerms: ['Copyright', 'Infringement', 'DMCA', 'Licensing'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Licensing',
@@ -240,6 +298,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Corporate, Business & IP',
     example: 'A software company licenses its operating system to device manufacturers rather than selling them ownership of the underlying code.',
     relatedTerms: ['Patent', 'Copyright', 'Trademark', 'Royalty'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Prior Art',
@@ -248,6 +308,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Corporate, Business & IP',
     example: 'The defendant successfully challenged the patent by introducing a scientific article published two years before the filing date as prior art.',
     relatedTerms: ['Patent', 'Novelty', 'Obviousness', 'Patent Infringement'],
+    difficulty: 'Advanced',
+    isEssential: false,
   },
   {
     term: 'Trade Dress',
@@ -256,6 +318,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Corporate, Business & IP',
     example: 'The distinctive shape of a Coca-Cola bottle constitutes protectable trade dress that consumers associate with the brand.',
     relatedTerms: ['Trademark', 'Infringement', 'Licensing', 'Secondary Meaning'],
+    difficulty: 'Advanced',
+    isEssential: false,
   },
   {
     term: 'Digital Millennium Copyright Act (DMCA)',
@@ -264,6 +328,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Corporate, Business & IP',
     example: 'YouTube relies on the DMCA safe harbor to avoid copyright liability for user-uploaded videos, provided it promptly removes content upon receiving valid takedown notices.',
     relatedTerms: ['Copyright', 'Fair Use', 'Infringement', 'Safe Harbor'],
+    difficulty: 'Advanced',
+    isEssential: false,
   },
   {
     term: 'Securities Fraud',
@@ -272,6 +338,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Corporate, Business & IP',
     example: 'The company\'s CFO was charged with securities fraud for falsifying quarterly earnings reports that inflated the stock price.',
     relatedTerms: ['Rule 10b-5', 'Insider Trading', 'Securities', 'SEC'],
+    difficulty: 'Advanced',
+    isEssential: false,
   },
   {
     term: 'Operating Agreement',
@@ -280,6 +348,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Corporate, Business & IP',
     example: 'The operating agreement specified that major decisions required a two-thirds vote of membership interests rather than a simple majority.',
     relatedTerms: ['Limited Liability Company', 'Partnership', 'Corporation', 'Fiduciary Duty'],
+    difficulty: 'Intermediate',
+    isEssential: false,
   },
   {
     term: 'Representations and Warranties',
@@ -288,6 +358,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Corporate, Business & IP',
     example: 'The seller\'s warranty that all financial statements were accurate was breached when the buyer discovered $5 million in undisclosed liabilities post-closing.',
     relatedTerms: ['Due Diligence', 'Merger', 'Acquisition', 'Indemnification'],
+    difficulty: 'Advanced',
+    isEssential: false,
   },
   {
     term: 'Non-Disclosure Agreement (NDA)',
@@ -296,6 +368,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Corporate, Business & IP',
     example: 'Before sharing proprietary software code with a potential investor, the startup required the investor to sign an NDA.',
     relatedTerms: ['Trade Secret', 'Licensing', 'Confidentiality', 'Misappropriation'],
+    difficulty: 'Beginner',
+    isEssential: false,
   },
   {
     term: 'Sherman Act',
@@ -304,6 +378,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Corporate, Business & IP',
     example: 'Competing companies that agreed to fix prices at a trade meeting violated Section 1 of the Sherman Act.',
     relatedTerms: ['Antitrust', 'Monopoly', 'Clayton Act', 'Market Power'],
+    difficulty: 'Advanced',
+    isEssential: false,
   },
   {
     term: 'Intellectual Property (IP)',
@@ -312,6 +388,8 @@ const terms: GlossaryTermSeed[] = [
     category: 'Corporate, Business & IP',
     example: 'The startup\'s most valuable assets were its intellectual property portfolio, consisting of three pending patents and several registered trademarks.',
     relatedTerms: ['Patent', 'Copyright', 'Trademark', 'Trade Secret'],
+    difficulty: 'Beginner',
+    isEssential: true,
   },
 ];
 

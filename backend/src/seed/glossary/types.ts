@@ -8,4 +8,8 @@ export interface GlossaryTermSeed {
   example?: string;
   /** Names of related terms (free text, not foreign keys). */
   relatedTerms?: string[];
+  /** Learning difficulty — defaults to 'Intermediate' if omitted. */
+  difficulty?: 'Beginner' | 'Intermediate' | 'Advanced';
+  /** Foundational "must-know" terms surfaced in the Start Here / Essentials view. */
+  isEssential?: boolean;
 }
