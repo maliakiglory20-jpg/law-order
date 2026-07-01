@@ -5,6 +5,7 @@ import { ChevronRight, BookOpen, Clock, Award, Scale, FileText, Landmark } from 
 import { CaseCard } from '@/components/cases/CaseCard';
 import { TypeIcon } from '@/components/litigation/TypeIcon';
 import { useLitigationType } from '@/hooks/useLitigation';
+import { useStatutes } from '@/hooks/useStatutes';
 import { casesApi } from '@/lib/api';
 import { Case } from '@/types';
 
@@ -18,6 +19,15 @@ const difficultyColor: Record<string, string> = {
 export default function LitigationTypePage({ params }: { params: { slug: string } }) {
   const { type, isLoading, error } = useLitigationType(params.slug);
   const [typeCases, setTypeCases] = useState<Case[]>([]);
+  // Statutes related to this litigation type, used to link the "Key Statutes" list.
+  const { statutes } = useStatutes({ litigation: params.slug });
+
+  const matchStatute = (text: string) => {
+    const t = text.toLowerCase();
+    return statutes.find(
+      (st) => t.includes(st.name.toLowerCase()) || (st.shortName && t.includes(st.shortName.toLowerCase())),
+    );
+  };
 
   useEffect(() => {
     if (!type?.id) return;
@@ -121,12 +131,28 @@ export default function LitigationTypePage({ params }: { params: { slug: string 
             <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-6">
               <h2 className="font-semibold text-slate-900 dark:text-white mb-3 flex items-center gap-2"><Landmark className="h-5 w-5 text-amber-500" />Key Statutes &amp; Governing Laws</h2>
               <ul className="space-y-2">
-                {type.keyStatutes!.map((s, i) => (
-                  <li key={i} className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400">
-                    <span className="text-amber-500 mt-0.5">§</span>{s}
-                  </li>
-                ))}
+                {type.keyStatutes!.map((s, i) => {
+                  const st = matchStatute(s);
+                  return (
+                    <li key={i} className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400">
+                      <span className="text-amber-500 mt-0.5">§</span>
+                      {st ? (
+                        <Link
+                          href={`/statutes/${st.slug}`}
+                          className="text-amber-700 dark:text-amber-400 hover:text-amber-800 underline decoration-dotted underline-offset-2"
+                        >
+                          {s}
+                        </Link>
+                      ) : (
+                        <span>{s}</span>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
+              {statutes.length > 0 && (
+                <p className="text-xs text-slate-400 mt-3">Tip: underlined laws link to a plain-language summary in the Statute Library.</p>
+              )}
             </div>
           )}
 

@@ -1,5 +1,6 @@
 'use client';
 import { useMemo, useState } from 'react';
+import Link from 'next/link';
 import { Search, Scale, ExternalLink } from 'lucide-react';
 import { useStatutes, useStatuteCategories } from '@/hooks/useStatutes';
 
@@ -92,7 +93,7 @@ export default function StatutesPage() {
             {filtered.map((s) => (
               <div key={s.id} className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-5 flex flex-col">
                 <div className="flex items-start justify-between gap-2 mb-1">
-                  <h3 className="font-semibold text-slate-900 dark:text-white leading-tight">{s.name}</h3>
+                  <Link href={`/statutes/${s.slug}`} className="font-semibold text-slate-900 dark:text-white leading-tight hover:text-amber-600">{s.name}</Link>
                   <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full whitespace-nowrap ${jurisdictionBadge[s.jurisdiction] ?? 'bg-slate-100 text-slate-600'}`}>
                     {s.jurisdiction}
                   </span>
