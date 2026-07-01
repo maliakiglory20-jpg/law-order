@@ -156,6 +156,38 @@ docker-compose down -v && docker-compose up --build
 
 ---
 
+## Deploy to Production (Render + Vercel)
+
+The **frontend** is hosted on Vercel; the **backend + PostgreSQL** on Render.
+
+### 1. Backend + database — Render (one click)
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/maliakiglory20-jpg/law-order)
+
+Or manually: **Render dashboard → New → Blueprint → connect this repo.** Render reads [`render.yaml`](render.yaml) and provisions the web service (from `backend/Dockerfile`) + a managed Postgres, generates the JWT/session secrets, and sets `FRONTEND_URL`/`CORS_ORIGINS` to the Vercel domain. Migrations run automatically on boot. Copy the service URL when it's live (e.g. `https://litigation-backend-xxxx.onrender.com`).
+
+### 2. Seed the hosted database (one time)
+
+The production image has no `ts-node`, so seed from your machine using the DB's **External** connection string (Render dashboard → database → *External Database URL*):
+
+```bash
+./scripts/seed-remote.sh "postgresql://user:pass@host:5432/dbname?sslmode=require"
+```
+
+Loads users, 35 litigation types, 175 cases, 476 glossary terms, and 87 statutes.
+
+### 3. Point the frontend at the backend — Vercel
+
+```bash
+cd frontend
+vercel env add NEXT_PUBLIC_API_URL production   # paste the Render backend URL
+vercel --prod
+```
+
+> Free Render web services sleep after ~15 min idle; the first request after a nap takes ~30–60s to wake. Set `ANTHROPIC_API_KEY` in the Render dashboard to enable the AI features.
+
+---
+
 ## Database Schema
 
 ### Core Models
