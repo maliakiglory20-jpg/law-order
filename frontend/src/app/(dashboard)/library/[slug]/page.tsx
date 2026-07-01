@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ChevronRight, BookOpen, Clock, Award, Scale, FileText } from 'lucide-react';
+import { ChevronRight, BookOpen, Clock, Award, Scale, FileText, Landmark } from 'lucide-react';
 import { CaseCard } from '@/components/cases/CaseCard';
 import { TypeIcon } from '@/components/litigation/TypeIcon';
 import { useLitigationType } from '@/hooks/useLitigation';
@@ -110,6 +110,20 @@ export default function LitigationTypePage({ params }: { params: { slug: string 
                 {type.keyPrinciples.map((p, i) => (
                   <li key={i} className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400">
                     <span className="text-amber-500 mt-0.5">•</span>{p}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {/* Key Statutes & Governing Laws */}
+          {(type.keyStatutes?.length ?? 0) > 0 && (
+            <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-6">
+              <h2 className="font-semibold text-slate-900 dark:text-white mb-3 flex items-center gap-2"><Landmark className="h-5 w-5 text-amber-500" />Key Statutes &amp; Governing Laws</h2>
+              <ul className="space-y-2">
+                {type.keyStatutes!.map((s, i) => (
+                  <li key={i} className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400">
+                    <span className="text-amber-500 mt-0.5">§</span>{s}
                   </li>
                 ))}
               </ul>

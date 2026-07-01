@@ -31,6 +31,7 @@ export interface LitigationType {
   courtProcess: string;
   keyPrinciples: string[];
   practicalExamples: string[];
+  keyStatutes?: string[];
   icon: string;
   color: string;
   category: string;

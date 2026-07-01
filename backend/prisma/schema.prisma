@@ -88,6 +88,7 @@ model LitigationType {
   courtProcess      String   @db.Text
   keyPrinciples     String[]
   practicalExamples String[]
+  keyStatutes       String[]
   icon              String   @default("Scale")
   color             String   @default("#1e3a5f")
   category          String   @default("General")
