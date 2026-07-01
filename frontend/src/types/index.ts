@@ -223,6 +223,23 @@ export interface SearchResults {
   total: number;
 }
 
+export interface Statute {
+  id: string;
+  name: string;
+  slug: string;
+  shortName?: string | null;
+  citation?: string | null;
+  category: string;
+  jurisdiction: string;
+  enactedYear?: number | null;
+  summary: string;
+  keyProvisions: string[];
+  officialUrl?: string | null;
+  relatedLitigation: string[];
+  createdAt: string;
+  updatedAt: string;
+}
+
 export interface GlossaryTerm {
   id: string;
   term: string;

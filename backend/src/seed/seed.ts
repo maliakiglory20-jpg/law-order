@@ -3,6 +3,7 @@ import * as bcrypt from 'bcryptjs';
 import { litigationTypes } from './litigation-types';
 import { landmarkCases } from './cases';
 import { glossaryTerms } from './glossary';
+import { statutes as statuteSeeds } from './statutes';
 
 const prisma = new PrismaClient();
 
@@ -180,6 +181,50 @@ async function main() {
   }
   await prisma.glossaryTerm.createMany({ data: glossaryData });
   console.log(`  Created ${glossaryData.length} glossary terms`);
+
+  // Seed statutes (Statute Library)
+  console.log('Seeding statutes...');
+  await prisma.statute.deleteMany();
+  const seenStatuteNames = new Set<string>();
+  const seenStatuteSlugs = new Set<string>();
+  const statuteData = [] as Array<{
+    name: string;
+    slug: string;
+    shortName: string | null;
+    citation: string | null;
+    category: string;
+    jurisdiction: string;
+    enactedYear: number | null;
+    summary: string;
+    keyProvisions: string[];
+    officialUrl: string | null;
+    relatedLitigation: string[];
+  }>;
+  for (const s of statuteSeeds) {
+    const key = s.name.trim().toLowerCase();
+    if (seenStatuteNames.has(key)) continue; // de-duplicate statutes shared across domains
+    seenStatuteNames.add(key);
+    const base = slugify(s.name);
+    let slug = base;
+    let n = 2;
+    while (seenStatuteSlugs.has(slug)) slug = `${base}-${n++}`;
+    seenStatuteSlugs.add(slug);
+    statuteData.push({
+      name: s.name.trim(),
+      slug,
+      shortName: s.shortName ?? null,
+      citation: s.citation ?? null,
+      category: s.category,
+      jurisdiction: s.jurisdiction,
+      enactedYear: s.enactedYear ?? null,
+      summary: s.summary,
+      keyProvisions: s.keyProvisions ?? [],
+      officialUrl: s.officialUrl ?? null,
+      relatedLitigation: s.relatedLitigation ?? [],
+    });
+  }
+  await prisma.statute.createMany({ data: statuteData });
+  console.log(`  Created ${statuteData.length} statutes`);
 
   // Create sample quizzes
   console.log('Creating sample quizzes...');

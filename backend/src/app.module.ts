@@ -11,6 +11,7 @@ import { AnalyticsModule } from './modules/analytics/analytics.module';
 import { SearchModule } from './modules/search/search.module';
 import { AiModule } from './modules/ai/ai.module';
 import { GlossaryModule } from './modules/glossary/glossary.module';
+import { StatutesModule } from './modules/statutes/statutes.module';
 import { PrismaService } from './prisma.service';
 
 @Module({
@@ -46,6 +47,7 @@ import { PrismaService } from './prisma.service';
     SearchModule,
     AiModule,
     GlossaryModule,
+    StatutesModule,
   ],
   providers: [PrismaService],
   exports: [PrismaService],

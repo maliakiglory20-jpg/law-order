@@ -14,6 +14,7 @@ import { cn } from '@/lib/utils';
 const navLinks = [
   { href: '/library', label: 'Library', icon: BookOpen },
   { href: '/dictionary', label: 'Dictionary', icon: BookA },
+  { href: '/statutes', label: 'Statutes', icon: Scale },
   { href: '/cases', label: 'Cases', icon: Briefcase },
   { href: '/quizzes', label: 'Quizzes', icon: Brain },
   { href: '/analytics', label: 'Analytics', icon: BarChart3 },

@@ -156,6 +156,14 @@ export const aiApi = {
     api.post('/ai/generate-quiz', params),
 };
 
+// Statutes (Statute Library) API
+export const statutesApi = {
+  getAll: (params?: { search?: string; category?: string; jurisdiction?: string; litigation?: string; page?: number; limit?: number }) =>
+    api.get('/statutes', { params }),
+  getCategories: () => api.get('/statutes/categories'),
+  getBySlug: (slug: string) => api.get(`/statutes/${slug}`),
+};
+
 // Glossary (Legal Dictionary) API
 export const glossaryApi = {
   getAll: (params?: { search?: string; category?: string; letter?: string; difficulty?: string; essential?: boolean; page?: number; limit?: number }) =>
